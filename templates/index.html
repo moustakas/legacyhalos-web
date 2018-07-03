@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+legacyhalos rock
+{% endblock %}
+
+{% block content %}
+<center>
+<h2>legacyhalos header</h2>
+
+<!--
+<table border="0">
+<th>WISE All-Sky Release Atlas Image</th><th>unWISE coadd</th>
+<tr>
+<td><img src="{% static "npole2-00.png" %}" /></td><td><img src="{% static "npole2-01.png" %}" /></td>
+</tr>
+<tr><td colspan="2" align="center">(W1,W2 composite, tile 2709p666, ~6 arcmin square)</td></tr>
+</table>
+-->
+
+<br/>
+<p class="big"><a href="/imgsearch/">Search the Database</a></p>
+<br/>
+
+<p>
+  unWISE coadds:<br/>
+  Paper 1: <a href="http://arxiv.org/abs/1405.0308">paper (arxiv 1405.0308)</a> or <a href="http://iopscience.iop.org/1538-3881/147/5/108/">(AJ)</a>
+  <a href="{% static 'unwise.pdf' %}">(PDF)</a>
+  <a href="{% static 'unwise-bw.pdf' %}">(B&amp;W PDF)</a>
+<br/>
+
+Please cite one or more of:
+<br/>
+Paper in prep...
+<br/>
+<br/>
+<a href="https://github.com/moustakas/legacyhalos">code</a>
+<br/>
+<br/>
+
+<br/><br/>
+Contact: <a href="http://siena.edu/moustakas">John Moustakas</a>, jmoustakas at siena dot edu<br/></p>
+<br/>
+
+<p>
+<img src="{% static "orion.jpg" %}" />
+<br/>
+Orion nebula
+</p>
+
+{% endblock %}
