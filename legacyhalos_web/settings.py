@@ -46,7 +46,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sessions',
-    'legacyhalos',
+    'legacyhalos_web',
     #'coadd', # possible subdirectories to add in 'templates'
     #'sdssphot',
 )
@@ -61,9 +61,9 @@ MIDDLEWARE_CLASSES = (
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'legacyhalos.urls'
+ROOT_URLCONF = 'legacyhalos_web.urls'
 
-WSGI_APPLICATION = 'legacyhalos.wsgi.application'
+WSGI_APPLICATION = 'legacyhalos_web.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/databases/

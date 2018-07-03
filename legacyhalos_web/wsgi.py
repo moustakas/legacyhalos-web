@@ -12,14 +12,14 @@ import site
 import sys
 
 rootpath=os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-legacyhalospath=os.path.join(rootpath, 'legacyhalos')
+legacyhalospath=os.path.join(rootpath, 'legacyhalos_web')
 
 # This will make Django run in a virtual env
 # Remember original sys.path.
 prev_sys_path = list(sys.path)
 
 # Add each new site-packages directory.
-site.addsitedir(os.path.join(rootpath, 'lib', 'python2.6', 'site-packages'))
+site.addsitedir(os.path.join(rootpath, 'lib', 'python3.6', 'site-packages'))
 
 # Reorder sys.path so new directories at the front.
 new_sys_path = []
@@ -43,7 +43,7 @@ for i in [rootpath, legacyhalospath]:
 # import tractor
 # print tractor.__file__
     
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'legacyhalos.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'legacyhalos_web.settings')
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 

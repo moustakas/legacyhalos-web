@@ -1,14 +1,14 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, QueryDict, StreamingHttpResponse
 from django.shortcuts import render_to_response, get_object_or_404, redirect, render
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.exceptions import ValidationError
 from django import forms
 from django.views.generic import ListView, DetailView
 
-from unwise import settings
-from unwise.common import *
-from unwise.models import *
-from coadd.models import *
+from legacyhalos_web import settings
+# from unwise.common import *
+# from unwise.models import *
+# from coadd.models import *
 
 from astrometry.util.fits import *
 from astrometry.util.starutil_numpy import *
@@ -224,7 +224,7 @@ def coord_search(req):
             tracking.ra = ra
             tracking.dec = dec
             tracking.radius = radius
-            print 'ra,dec,radius', ra,dec,radius
+            print('ra,dec,radius', ra,dec,radius)
             
             if dotrack:
                 tracking.save()
