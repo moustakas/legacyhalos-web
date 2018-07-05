@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}
-legacyhalos rock
+legacyhalos
 {% endblock %}
 
 {% block content %}
@@ -20,15 +20,8 @@ legacyhalos rock
 -->
 
 <br/>
-<p class="big"><a href="/imgsearch/">Search the Database</a></p>
-<br/>
+<p class="big"><a href="">Search the Database</a></p>
 
-<p>
-  unWISE coadds:<br/>
-  Paper 1: <a href="http://arxiv.org/abs/1405.0308">paper (arxiv 1405.0308)</a> or <a href="http://iopscience.iop.org/1538-3881/147/5/108/">(AJ)</a>
-  <a href="{% static 'unwise.pdf' %}">(PDF)</a>
-  <a href="{% static 'unwise-bw.pdf' %}">(B&amp;W PDF)</a>
-<br/>
 
 Please cite one or more of:
 <br/>
@@ -40,7 +33,7 @@ Paper in prep...
 <br/>
 
 <br/><br/>
-Contact: <a href="http://siena.edu/moustakas">John Moustakas</a>, jmoustakas at siena dot edu<br/></p>
+Contact: <a href="https://www.siena.edu/faculty-and-staff/person/john-moustakas/">John Moustakas</a>, jmoustakas@siena.edu<br/></p>
 <br/>
 
 <p>
@@ -48,5 +41,37 @@ Contact: <a href="http://siena.edu/moustakas">John Moustakas</a>, jmoustakas at 
 <br/>
 Orion nebula
 </p>
+
+<h3>Cone Search for Tiles:</h3>
+<form action="{{ url }}">
+  {{ form.non_field_errors }}
+  <table class="formtab">
+    <tbody>
+    <tr>
+      <td align="right"><label for="id_version">Version:</label></td>
+      <td>
+        {{ form.version }}
+        {{ form.version.errors }}
+      </td>
+    </tr>
+    <tr>
+      <td align="right"><label for="id_coord">Coordinates:</label></td>
+      <td>
+        {{ form.coord }}
+        {{ form.coord.errors }}
+      </td>
+    </tr>
+    <tr>
+      <td  align="right"><label for="id_radius">Radius (deg):</label></td>
+      <td>
+        {{ form.radius }}
+        {{ form.radius.errors }}
+      </td>
+    </tr>
+    <tr><td colspan="2" align="center">
+        <input type="submit" value="Search" class="bigbutton" />
+    </td></tr>
+    </tbody>
+  </table>
 
 {% endblock %}
