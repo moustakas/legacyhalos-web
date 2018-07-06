@@ -1,15 +1,15 @@
 from django.conf.urls import include, url
 from django.urls import path, include
-import data.views as data
+import centrals.views as cen
 
 urlpatterns = [
-    url(r'^$', data.index, name='index'),
+    url(r'^$', cen.index, name='index'),
 ]
 
 urlpatterns += [
   #url(r'^photsearch/?$', data.coord_search, name='phot-search'),
   #url(r'^phot_near/?$', data.conesearch_results),
-  url(r'^phot_box/?$', data.boxsearch_results),
+  url(r'^phot_box/?$', cen.boxsearch_results),
 ]
 
 #urlpatterns += patterns('animate',
