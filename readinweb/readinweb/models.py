@@ -1,7 +1,7 @@
 from django.db.models import Model, IntegerField, CharField, FloatField, IPAddressField, DateTimeField, ManyToManyField, TextField, BooleanField
 
 class Halos(Model):
-    name = FloatField(null=True)
+    name = CharField(max_length=64, null=True)
     ra = FloatField(null=True)
     dec = FloatField(null=True)
 
