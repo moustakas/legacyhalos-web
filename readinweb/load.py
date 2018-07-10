@@ -5,7 +5,7 @@ django.setup()
 
 from readinweb.models import *
 import csv
-import fitsio
+
 
 #T = fits_table('central.csv')
 #T.delete_column('row')
@@ -18,7 +18,7 @@ dataReader = csv.reader(open(csv_filepathname), delimiter=',', quotechar='"')
 for row in dataReader:
     print('Row:', row)
     halos=Halos()
-    halos.name=row[0]
+    halos.num=row[0]
     halos.ra = row[1]
     halos.dec = row[2]
     halos.save()

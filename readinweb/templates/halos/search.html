@@ -33,89 +33,6 @@ width: 60%;
 
 {% block content %}
 <center>
-<h2>SDSS/WISE forced photometry search</h2>
-
-{% comment %}
-{% if sdsscollab %}
-{% endif %}
-{% endcomment %}
-
-<h3>Cone Search:</h3>
-
-{% if sdsscollab %}
-<input type="hidden" name="sdss" value=1 />
-{% else %}
-<form action="{{ url }}">
-{% endif %}
-  {{ form.non_field_errors }}
-  <table class="formtab">
-    <tbody>
-    <tr>
-      <td align="right"><label for="id_coord">Coordinates:</label></td>
-      <td>
-        {{ form.coord }}
-        {{ form.coord.errors }}
-        </td>
-    </tr>
-    <tr>
-      <td  align="right"><label for="id_radius">Radius (deg):</label></td>
-      <td>
-        {{ form.radius }}
-        {{ form.radius.errors }}
-      </td>
-    </tr>
-
-{% if sdsscollab %}
-    <tr>
-      <td  align="right"><label for="id_version">Version:</label></td>
-      <td>
-        {{ form.version }}
-        {{ form.version.errors }}
- {% comment %}
-        <select id="id_version" name="version">
-          {% for val,string in version_choices %}
-          <option value="{{val}}">{{string}}</option>
-          {% endfor %}
-        </select>
- {% endcomment %}
-      </td>
-    </tr>
-
-{% comment %}
-    <tr>
-      <td  align="right"><label for="id_password">SDSS "Well-known" Password:</label></td>
-      <td>{{ form.password }}{{ form.password.errors }}</td>
-      <input type="hidden" name="username" value="sdss" />
-    </tr>
-{% endcomment %}
-
-{% endif %}
-    <tr>
-      <td  align="right"><label for="id_datatype">Data type:</label></td>
-      <td>
-    {% comment %}
-        <select id="id_datatype" name="datatype">
-          {% for val,string in datatype_choices %}
-          <option value="{{val}}">{{string}}</option>
-          {% endfor %}
-      </select>
-    {% endcomment %}
-        {{ form.datatype }}
-      </td>
-    </tr>
-    <tr><td /></tr>
-    <tr><td colspan="2" align="center">
-        <input type="submit" value="Search" class="bigbutton" />
-    </td></tr>
-    </tbody>
-  </table>
-
-  <div id="verbox">
-  Coordinates example: "45 17" (decimal degrees), "12:57:10.4 -43:65:10" (hh:mm:ss dd:mm:ss).
-  </div>
-</form>
-
-<hr>
 
 <h3>RA,Dec Box Search:</h3>
 
@@ -153,23 +70,6 @@ width: 60%;
         </td>
     </tr>
 
-{% if sdsscollab %}
-    <tr>
-      <td  align="right" colspan="2"><label for="id_version">Version:</label></td>
-      <td colspan="2">
-        {{ boxform.version }}
-        {{ boxform.version.errors }}
-      </td>
-    </tr>
-
-{% comment %}
-    <tr>
-      <td  align="right" colspan="2"><label for="id_password">SDSS "Well-known" Password:</label></td>
-      <td colspan="2">{{ boxform.password }}{{ boxform.password.errors }}</td>
-      <input type="hidden" name="username" value="sdss" />
-    </tr>
-{% endcomment %}
-
 {% endif %}
 
     <tr>
@@ -187,52 +87,6 @@ width: 60%;
 </form>
 
 <hr/>
-
-  <div id="verbox">
-  Search radius limits:<br/>
-  &nbsp;&nbsp;<b>1</b> degree for "Flat FITS table" searches<br />
-  &nbsp;&nbsp;<b>10</b> degrees for "SDSS fields in range"<br />
-  &nbsp;&nbsp;No limit for WISE tiles.
-  <br /><br />
-
-{% if sdsscollab %}
-  Versions:
-<br/>
-&nbsp;&nbsp;<b>DR10</b> Public; uses SDSS DR10 photometry<br />
-&nbsp;&nbsp;<b>DR13</b> Uses SDSS "v5b" or "pre-DR13" photometry<br />
-&nbsp;&nbsp;<b>eBOSS</b> The version we used for eBOSS and SEQUELS targeting; uses "v5b" photometry<br />
-
-
-{% comment %}
-<br /><br />
-Password hint: either the original SDSS password relating to the number of CCDs in the camera, or the SDSS-IV password relating to the aperture of the telescope.
-{% endcomment %}
-
-
-{% endif %}
 </div>
-
-
-<hr>
-
-
-
-
-
-
-<h3>Do it yourself:</h3>
-<p>
-<a href="{{ dataurl }}">Direct file access</a>
-
-{% comment %}
-{% if sdsscollab %}
- &nbsp;|&nbsp; <a href="{{ dataurl }}/sdss-collab">SDSS-collab private directory</a>
-{% endif %}
-{% endcomment %}
-
-</p>
-
-<hr>
-
 </center>
 {% endblock %}
