@@ -13,9 +13,10 @@ import fitsio
 #T.cut(np.argsort(T.coadd_id))
 
 csv_filepathname="centrals.csv"
-dataReader = csv.reader(open(csv_filepathname), delimeter=',', quotechar='"')
+dataReader = csv.reader(open(csv_filepathname), delimiter=',', quotechar='"')
 
 for row in dataReader:
+    print('Row:', row)
     halos=Halos()
     halos.name=row[0]
     halos.ra = row[1]
