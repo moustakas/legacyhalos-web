@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<html>
+{% block header %}
+<head>
+<title>
+{% block title %}
+unWISE coadds
+{% endblock %}
+</title>
+<style type="text/css">
+{% block basecss %}
+body {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+}
+hr {
+width: 66%;
+}
+.bigbutton { font-size:125%; padding:2px; padding-left:10px; padding-right:10px; font-weight: bold}
+.big {
+font-size:150%;
+font-weight: bold;
+}
+.errorlist { color:red; }
+{% endblock %}
+{% block css %}
+{% endblock css %}
+</style>
+</head>
+{% endblock %}
+{% block javascript %}
+{% endblock %}
+<body>
+{% block content %}
+{% endblock %}
+</body>
+</html>
