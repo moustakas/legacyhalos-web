@@ -7,7 +7,7 @@ def index(req):
 def boxsearch_results(req, fields_fits_table=False):
     form = SdssPhotRaDecBoxSearchForm(req.GET)
     if not form.is_valid():
-        print 'Form not valid'
+        print('Form not valid')
         return HttpResponseRedirect(reverse(coord_search))
 
     name = form.cleaned_data['name']
@@ -30,7 +30,7 @@ def coord_search(req):
                                    radius_str=form.data.get('radius', None))
 
         if form.is_valid():
-            print 'Form is valid: data', form.cleaned_data
+            print('Form is valid: data', form.cleaned_data)
 
             # Process the data in form.cleaned_data
             ra,dec = parse_coord(form.cleaned_data['coord'])
@@ -68,7 +68,7 @@ def coord_search(req):
     elif 'ralo' in req.GET:
         boxform = SdssPhotRaDecBoxSearchForm(req.GET)
         if boxform.is_valid():
-            print 'Form is valid: data', boxform.cleaned_data
+            print('Form is valid: data', boxform.cleaned_data)
             # Process the data in boxform.cleaned_data
             ralo = parse_ra(boxform.cleaned_data['ralo'])
             rahi = parse_ra(boxform.cleaned_data['rahi'])
