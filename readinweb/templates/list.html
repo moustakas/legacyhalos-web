@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+List of halos
+{% endblock %}
+
+{% block content %}
+
+<center>
+  <table><tr><th>Name</th><th>RA</th><th>Dec</th></tr>
+    {% for halo in halos %}
+    <tr><td>{{ halo.name }}</td><td>{{ halo.ra }}</td><td>{{ halo.dec }}</td></tr>
+    {% endfor %}
+  </table>
+</center>
+{% endblock %}
