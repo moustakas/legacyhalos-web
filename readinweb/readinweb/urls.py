@@ -23,7 +23,9 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^list$', ha.list),
 #   path('admin/', admin.site.urls),
+
 ]
 
 urlpatterns += [

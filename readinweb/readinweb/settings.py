@@ -25,7 +25,7 @@ SECRET_KEY = 'eok&i&(7=!8u%9lr48%pks9x7pfp7b=a6^p)^ldscte+t&_tz+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nyx.siena.edu']
+ALLOWED_HOSTS = ['nyx.siena.edu', 'localhost']
 
 
 # Application definition

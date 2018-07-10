@@ -1,5 +1,10 @@
 #In Halos
 from django.shortcuts import render
+from readinweb.models import Halos
+
+def list(req):
+    halos = Halos.objects.all()
+    return render(req, 'list.html', context=dict(halos=halos))
 
 def index(req):
     return render(req, 'index.html')
