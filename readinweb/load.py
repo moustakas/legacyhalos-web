@@ -1,5 +1,7 @@
 import os,sys
-os.environ.setdefault("DJANGO_SETTINGS_MODULS", "unwise.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "readinweb.settings")
+import django
+django.setup()
 
 from readinweb.models import *
 import csv
