@@ -12,13 +12,18 @@ import csv
 #print (len(T), 'rows')
 #T.cut(np.argsort(T.coadd_id))
 
-csv_filepathname="centrals.csv"
+csv_filepathname="centrals-sample.csv"
 dataReader = csv.reader(open(csv_filepathname), delimiter=',', quotechar='"')
 
 for row in dataReader:
     print('Row:', row)
-    halos=Halos()
-    halos.num=row[0]
-    halos.ra = row[1]
-    halos.dec = row[2]
-    halos.save()
+    centrals=Centrals()
+    centrals.objid=row[0]
+    centrals.ctype=row[1]
+    centrals.ra = row[2]
+    centrals.dec = row[3]
+    centrals.mem_match_id = row[4]
+    centrals.z = row[5]
+    centrals.lambda_chisq = row[6]
+    centrals.sdss_objid = row[7]
+    centrals.save()

@@ -1,10 +1,10 @@
 #In Halos
 from django.shortcuts import render
-from readinweb.models import Halos
+from readinweb.models import Centrals
 
 def list(req):
-    halos = Halos.objects.all()
-    return render(req, 'list.html', context=dict(halos=halos))
+    centrals = Centrals.objects.all().order_by('objid')
+    return render(req, 'list.html', context=dict(centrals=centrals))
 
 def index(req):
     return render(req, 'index.html')

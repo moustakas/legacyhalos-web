@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+
+
 {% block title %}
 List of halos
 {% endblock %}
@@ -7,9 +9,9 @@ List of halos
 {% block content %}
 
 <center>
-  <table><tr><th>MEM_MATCH_ID</th><th>RA</th><th>DEC</th></tr>
-    {% for halo in halos %}
-    <tr><td>{{ halo.num }}</td><td>{{ halo.ra }}</td><td>{{ halo.dec }}</td></tr>
+  <table><tr><th>objid</th><th>cType</th><th>ra</th><th>dec</th><th>mem_match_id</th><th>z</th><th>lambda_chisq</th><th>sdss_objid</th></tr>
+    {% for central in centrals %}
+    <tr><td>{{ central.objid }}</td><td>{{ central.ctype }}</td><td>{{central.ra }}</td><td>{{ central.dec }}</td><td>{{ central.mem_match_id }}</td><td>{{ central.z }}</td><td>{{ central.lambda_chisq }}</td><td>{{central.sdss_objid }}</td></tr>
     {% endfor %}
   </table>
 </center>

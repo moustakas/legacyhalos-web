@@ -1,9 +1,14 @@
 from django.db.models import Model, IntegerField, CharField, FloatField, IPAddressField, DateTimeField, ManyToManyField, TextField, BooleanField
 
-class Halos(Model):
-    num = IntegerField(max_length=64, null=True)
+class Centrals(Model):
+    objid = IntegerField(null=True)
+    ctype = CharField(max_length=64, null=True)
     ra = FloatField(null=True)
     dec = FloatField(null=True)
+    mem_match_id = FloatField(null=True)
+    z = FloatField(null=True)
+    lambd_chisq = FloatField(null=True)
+    sdss_objid = FloatField(null=True)
 
     def __str__(self):
-        return ('user Halo Search(%s, %s,%s)' % (self.num, self.ra, self.dec))
+        return ('user Central Search(%s,%s,%s,%s,%s,%s,%s,%s)' % (self.objid, self.ctype, self.ra, self.dec, self.mem_match_id, self.z, self.lambda_chisq, self.sdss_objid))
