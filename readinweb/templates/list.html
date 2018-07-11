@@ -11,7 +11,7 @@ List of halos
 <center>
   <table><tr><th>objid</th><th>cType</th><th>ra</th><th>dec</th><th>mem_match_id</th><th>z</th><th>lambda_chisq</th><th>sdss_objid</th></tr>
     {% for central in centrals %}
-    <tr><td>{{ central.objid }}</td><td>{{ central.ctype }}</td><td>{{central.ra }}</td><td>{{ central.dec }}</td><td>{{ central.mem_match_id }}</td><td>{{ central.z }}</td><td>{{ central.lambda_chisq }}</td><td>{{central.sdss_objid }}</td></tr>
+    <tr><td>{{ central.objid }}</td><td>{{ central.ctype }}</td><td>{{central.ra }}</td><td>{{ central.dec }}</td><td>{{ central.mem_match_id }}</td><td>{{ central.z }}</td><td>{{ central.la }}</td><td>{{central.sdss_objid }}</td></tr>
     {% endfor %}
   </table>
 </center>

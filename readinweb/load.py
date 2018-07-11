@@ -24,6 +24,6 @@ for row in dataReader:
     centrals.dec = row[3]
     centrals.mem_match_id = row[4]
     centrals.z = row[5]
-    centrals.lambda_chisq = row[6]
+    centrals.la = row[6]
     centrals.sdss_objid = row[7]
     centrals.save()

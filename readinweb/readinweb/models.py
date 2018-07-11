@@ -7,8 +7,8 @@ class Centrals(Model):
     dec = FloatField(null=True)
     mem_match_id = FloatField(null=True)
     z = FloatField(null=True)
-    lambd_chisq = FloatField(null=True)
+    la = FloatField(null=True)
     sdss_objid = FloatField(null=True)
 
     def __str__(self):
-        return ('user Central Search(%s,%s,%s,%s,%s,%s,%s,%s)' % (self.objid, self.ctype, self.ra, self.dec, self.mem_match_id, self.z, self.lambda_chisq, self.sdss_objid))
+        return ('user Central Search(%s,%s,%s,%s,%s,%s,%s,%s)' % (self.objid, self.ctype, self.ra, self.dec, self.mem_match_id, self.z, self.la, self.sdss_objid))

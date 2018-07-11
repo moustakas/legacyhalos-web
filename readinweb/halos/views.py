@@ -3,7 +3,7 @@ from django.shortcuts import render
 from readinweb.models import Centrals
 
 def list(req):
-    centrals = Centrals.objects.all().order_by('objid')
+    centrals = Centrals.objects.all().order_by('mem_match_id')
     return render(req, 'list.html', context=dict(centrals=centrals))
 
 def index(req):
