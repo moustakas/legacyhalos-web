@@ -8,6 +8,17 @@ List of halos
 
 {% block content %}
 
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for cen in filter.qs %}
+    <li>{{ cen.ctype }} - {{ cen.objid }}</li>
+  {% endfor %}
+  </ul>
+
+<!--
 <center>
   <table><tr><th>objid</th><th>cType</th><th>ra</th><th>dec</th><th>mem_match_id</th><th>z</th><th>lambda_chisq</th><th>sdss_objid</th></tr>
     {% for central in centrals %}
@@ -15,4 +26,5 @@ List of halos
     {% endfor %}
   </table>
 </center>
+-->
 {% endblock %}

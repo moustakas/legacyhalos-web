@@ -1,10 +1,12 @@
 #In Halos
 from django.shortcuts import render
 from readinweb.models import Centrals
+from .filters import CentralsFilter
 
 def list(req):
     centrals = Centrals.objects.all().order_by('mem_match_id')
-    return render(req, 'list.html', context=dict(centrals=centrals))
+    centrals_filter = CentralsFilter(req.GET, queryset=centrals)
+    return render(req, 'list.html', {'filter': centrals_filter})
 
 def index(req):
     return render(req, 'index.html')
