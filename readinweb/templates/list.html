@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 
-
-
 {% block title %}
 List of halos
 {% endblock %}
 
-{% block content %}
 
+
+{% block content %}
   <form method="get">
     {{ filter.form.as_p }}
     <button type="submit">Search</button>
   </form>
-  <ul>
+  <table class="table">
+<thead>
+<tr><th scope="col">objid</th><th scope="col">cType</th><th>ra</th><th scope="col">dec</th><th scope="col">mem_match_id</th><th scope="col">z</th><th scope="col">lambda_chisq</th><th scope="col">sdss_objid</th></tr>
+</thead>
+<tbody>
   {% for cen in filter.qs %}
-    <li>{{ cen.ctype }} - {{ cen.objid }}</li>
+    <tr><td>{{ cen.objid }}</td><td>{{ cen.ctype }}</td><td>{{cen.ra }}</td><td>{{ cen.dec }}</td><td>{{ cen.mem_match_id }}</td><td>{{ cen.z }}</td><td>{{ cen.la }}</td><td>{{cen.sdss_objid }}</td></tr>
   {% endfor %}
-  </ul>
+</tbody>
+  </table>
 
 <!--
 <center>
