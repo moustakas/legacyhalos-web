@@ -20,7 +20,7 @@ List of halos
 </thead>
 <tbody>
   {% for cen in filter.qs %}
-    <tr><td><a href ="http://portal.nersc.gov/project/cosmo/temp/ioannis/legacyhalos/{{cen.mem_match_id}}/{{ cen.mem_match_id }}.html">{{ cen.mem_match_id}}</a></td>
+    <tr><td><a href="http://portal.nersc.gov/project/cosmo/temp/ioannis/legacyhalos/{{cen.mem_match_id_string}}/{{cen.mem_match_id_string }}.html">{{ cen.mem_match_id_string}}</a></td>
 <td>{{cen.ra }}</td><td>{{ cen.dec }}</td><td>{{ cen.z}}</td>
 <td>{{ cen.la }}</td>
 <td><a href = "{{ cen.viewer_link }}">link</a></td><td><a href = "{{ cen.skyserver_link }}">link</a></td></tr>

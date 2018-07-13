@@ -33,7 +33,8 @@ for row in data:
     centrals.morphtype=row[1]
     centrals.ra = row[2]
     centrals.dec = row[3]
-    centrals.mem_match_id = '%0*d' % (7, row[4])
+    centrals.mem_match_id_string = '%0*d' % (7, row[4])
+    centrals.mem_match_id = row[4]
     centrals.z = row[5]
     centrals.la = row[6]
     centrals.sdss_objid = row[7]
