@@ -27,7 +27,7 @@ data = Table.read('centrals-sample.fits')
 data.rename_column('type', 'morphtype')
 
 for row in data:
-    print('Row:', row)
+    #print('Row:', row)
     centrals=Centrals()
     centrals.objid=row[0]
     centrals.morphtype=row[1]
@@ -37,6 +37,8 @@ for row in data:
     centrals.z = row[5]
     centrals.la = row[6]
     centrals.sdss_objid = row[7]
+    centrals.viewer_link = centrals.viewer_link()
+    centrals.skyserver_link = centrals.skyserver_link()
     centrals.save()
 
 ## for row in data:

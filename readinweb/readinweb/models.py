@@ -9,6 +9,23 @@ class Centrals(Model):
     z = FloatField(null=True)
     la = FloatField(null=True)
     sdss_objid = FloatField(null=True)
+    viewer_link = CharField(null=True)
+    skyserver_link = CharField(null = True)
 
     def __str__(self):
         return ('user Central Search(%s,%s,%s,%s,%s,%s,%s,%s)' % (self.objid, self.morphtype, self.ra, self.dec, self.mem_match_id, self.z, self.la, self.sdss_objid))
+
+    def viewer_link(self):
+        baseurl = 'http://legacysurvey.org/viewer/'
+        ## width = 2 * cutout_radius_150kpc(redshift=gal['z'], pixscale=0.262) # [pixels]
+        ## if width > 400:
+        ##     zoom = 14
+        ## else:
+        ##     zoom = 15
+        viewer = '{}?ra={:.6f}&dec={:.6f}&zoom=15&layer=decals-dr5'.format(
+            baseurl, self.ra, self.dec)
+        return viewer
+
+    def skyserver_link(self):
+        return 'http://skyserver.sdss.org/dr14/en/tools/explore/summary.aspx?id=%d' % self.sdss_objid
+
