@@ -11,36 +11,44 @@ unWISE coadds
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <style type="text/css">
 {% block basecss %}
-body {
-font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+body { font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; }
+hr { width: 66%; }
+.bigbutton { 
+  font-size:125%; 
+  padding:2px; 
+  padding-left:10px; 
+  padding-right:10px; 
+  font-weight: bold
 }
-hr {
-width: 66%;
-}
-.bigbutton { font-size:125%; padding:2px; padding-left:10px; padding-right:10px; font-weight: bold}
 .big {
-font-size:150%;
-font-weight: bold;
+  font-size:150%;
+  font-weight: bold;
 }
 form { margin: 15px }
 .table {
-margin: 15px;
-border-style: solid;
-border-color: black;
-width: 98%;
-text-align: center;
-margin-left: auto;
-margin-right: auto;
+  margin: 15px;
+  border-style: solid;
+  border-color: black;
+  width: 98%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (min-width: 700px){
   .table {
     width: 700px;
   }
 }
+#filterhead {
+  margin: 10px 0px;
+  padding: 5px 0px;
+  background-color: #cceeff;
+}
 .errorlist { color:red; }
 .cluster{
-width:75%;
-height:auto;}
+  width:75%;
+  height:auto;
+}
 {% endblock %}
 {% block css %}
 {% endblock css %}

@@ -35,8 +35,8 @@ for row in data:
     centrals.dec = row[3]
     centrals.mem_match_id_string = '%0*d' % (7, row[4])
     centrals.mem_match_id = row[4]
-    centrals.z = "%.3f" % row[5]
-    centrals.la = "%.3f" % row[6]
+    centrals.z = row[5]
+    centrals.la = row[6]
     centrals.sdss_objid = row[7]
     centrals.viewer_link = centrals.viewer_link()
     centrals.skyserver_link = centrals.skyserver_link()
