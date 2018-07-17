@@ -15,29 +15,29 @@ List of halos
    <!-- {{ filter.form.as_p }} -->
     <tr>
          <th><label for="id">redMaPPer ID:</label></th>
-         <td><input id="id" name="mem_match_id" type="text"/></td> 
+         <td><input id="id" name="mem_match_id" type="number" value="{{ filter.form.mem_match_id.value}}"/></td> 
     </tr>
     <p></p>
     <tr>
          <th><label for="ralo">RA low:</label></th>
-         <td><input id="ralo" name="ra__gt" type="number"/></td> 
+         <td><input id="ralo" name="ra__gt" type="number" value="{{ filter.form.ra__gt.value|default_if_none:'100' }}"/></td> 
     </tr>
     <tr>
          <th><label for="rahi">RA high:</label></th>
-         <td><input id="rahi" name="ra__lt" type="number"/></td> 
+         <td><input id="rahi" name="ra__lt" type="number" value="{{ filter.form.ra__lt.value|default_if_none:'200' }}"/></td> 
     </tr>
     <p></p>
     <tr>
          <th><label for="declo">Dec low:</label></th>
-         <td><input id="declo" name="dec__gt" type="number"/></td> 
+         <td><input id="declo" name="dec__gt" type="number" value="{{ filter.form.dec__gt.value|default_if_none:'0' }}"/></td> 
     </tr>
     <tr>
          <th><label for="dechi">Dec high:</label></th>
-         <td><input id="dechi" name="dec__lt" type="number"/></td> 
+         <td><input id="dechi" name="dec__lt" type="number" value="{{ filter.form.dec__lt.value|default_if_none:'10' }}"/></td> 
     </tr>
     <br></br>
     <p>
-    <button type="submit">Search</button>
+    <button type="submit" class="btn btn-primary">Search</button>
     </p> 
   </form>
 

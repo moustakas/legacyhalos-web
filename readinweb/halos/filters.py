@@ -13,7 +13,7 @@ class CentralsFilter(django_filters.FilterSet):
     dec__lt = django_filters.NumberFilter(name='dec', lookup_expr='lt', label='Dec high')
 
     #For regular titles
-    mem_match_id = django_filters.CharFilter(label='redMaPPer ID')
+    #mem_match_id = django_filters.CharFilter(label='redMaPPer ID')
     class Meta:
         model = Centrals
         fields = ['mem_match_id']
