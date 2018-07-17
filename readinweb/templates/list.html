@@ -12,9 +12,35 @@ List of halos
     Filter Table Contents
  </h2>
   <form method="get">
-    {{ filter.form.as_p }}
+   <!-- {{ filter.form.as_p }} -->
+    <tr>
+         <th><label for="id">redMaPPer ID:</label></th>
+         <td><input id="id" name="mem_match_id" type="text"/></td> 
+    </tr>
+    <p></p>
+    <tr>
+         <th><label for="ralo">RA low:</label></th>
+         <td><input id="ralo" name="ra__gt" type="number"/></td> 
+    </tr>
+    <tr>
+         <th><label for="rahi">RA high:</label></th>
+         <td><input id="rahi" name="ra__lt" type="number"/></td> 
+    </tr>
+    <p></p>
+    <tr>
+         <th><label for="declo">Dec low:</label></th>
+         <td><input id="declo" name="dec__gt" type="number"/></td> 
+    </tr>
+    <tr>
+         <th><label for="dechi">Dec high:</label></th>
+         <td><input id="dechi" name="dec__lt" type="number"/></td> 
+    </tr>
+    <br></br>
+    <p>
     <button type="submit">Search</button>
+    </p> 
   </form>
+
 </center>
 <table class="table">
 <thead>
