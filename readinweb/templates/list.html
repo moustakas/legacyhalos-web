@@ -20,11 +20,11 @@ List of halos
     <p></p>
     <tr>
          <th><label for="ralo">RA low:</label></th>
-         <td><input id="ralo" name="ra__gt" type="number" value="{{ filter.form.ra__gt.value|default_if_none:'100' }}"/></td> 
+         <td><input id="ralo" name="ra__gt" type="number" value="{{ filter.form.ra__gt.value|default_if_none:'100'}}"/></td> 
     </tr>
     <tr>
          <th><label for="rahi">RA high:</label></th>
-         <td><input id="rahi" name="ra__lt" type="number" value="{{ filter.form.ra__lt.value|default_if_none:'200' }}"/></td> 
+         <td><input id="rahi" name="ra__lt" type="number" value="{{ filter.form.ra__lt.value|default_if_none:'100'}}"/></td> 
     </tr>
     <p></p>
     <tr>
@@ -42,13 +42,15 @@ List of halos
   </form>
 
 </center>
+
 <table class="table">
 <thead>
-<tr><th scope="col" style="min-width:135px">redMaPPer ID</th><th>RA</th><th scope="col">Dec</th><th scope="col">Redshift</th><th scope="col">Richness</th><th scope="col">Viewer</th><th scope="col">SkyServer</th></tr>
+<tr><th scope="col">Number</th><th scope="col" style="min-width:135px">redMaPPer ID</th><th>RA</th><th scope="col">Dec</th><th scope="col">Redshift</th><th scope="col">Richness</th><th scope="col">Viewer</th><th scope="col">SkyServer</th></tr>
 </thead>
 <tbody>
-  {% for cen in filter.qs %}
-    <tr><td><a href="http://portal.nersc.gov/project/cosmo/temp/ioannis/legacyhalos/{{cen.mem_match_id_string}}/{{cen.mem_match_id_string }}.html">{{ cen.mem_match_id_string}}</a></td>
+  {% for cen in result %}
+<tr><td>{{ forloop.counter }}</td>
+<td><a href="http://portal.nersc.gov/project/cosmo/temp/ioannis/legacyhalos/{{cen.mem_match_id_string}}/{{cen.mem_match_id_string }}.html">{{ cen.mem_match_id_string}}</a></td>
 <td><script>
   var ra = {{ cen.ra }};
   ra = ra.toFixed(7);
@@ -74,13 +76,23 @@ List of halos
 </tbody>
   </table>
 
-<!--
-<center>
-  <table><tr><th>objid</th><th>cType</th><th>ra</th><th>dec</th><th>mem_match_id</th><th>z</th><th>lambda_chisq</th><th>sdss_objid</th></tr>
-    {% for central in centrals %}
-    <tr><td>{{ central.objid }}</td><td>{{ central.ctype }}</td><td>{{central.ra }}</td><td>{{ central.dec }}</td><td>{{ central.mem_match_id }}</td><td>{{ central.z }}</td><td>{{ central.la }}</td><td>{{central.sdss_objid }}</td></tr>
-    {% endfor %}
-  </table>
-</center>
--->
+<div class="pagination">
+    <span class="step-links">
+        {% if result.has_previous %}
+            <a href="{{ request.get_full_path }}&page=1">&laquo; first</a>
+            <a href="{{ request.get_full_path }}&page={{ result.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ result.number }} of {{ result.paginator.num_pages }}
+        </span>
+
+        {% if result.has_next %}
+            
+            <a href="{{ request.get_full_path }}&page={{ result.next_page_number }}">next</a>
+            <a href="{{ request.get_full_path }}&page={{ result.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 {% endblock %}

@@ -18,11 +18,6 @@ class Centrals(Model):
 
     def viewer_link(self):
         baseurl = 'http://legacysurvey.org/viewer/'
-        ## width = 2 * cutout_radius_150kpc(redshift=gal['z'], pixscale=0.262) # [pixels]
-        ## if width > 400:
-        ##     zoom = 14
-        ## else:
-        ##     zoom = 15
         viewer = '{}?ra={:.6f}&dec={:.6f}&zoom=15&layer=decals-dr5'.format(
             baseurl, self.ra, self.dec)
         return viewer

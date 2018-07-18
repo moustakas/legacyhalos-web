@@ -28,7 +28,3 @@ urlpatterns = [
 
 ]
 
-urlpatterns += [
-    url(r'^ha_box/?$', ha.boxsearch_results),
-
-]
