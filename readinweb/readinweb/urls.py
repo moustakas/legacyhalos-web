@@ -24,6 +24,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^list$', ha.list),
+    url(r'^centrals', ha.centrals),
 #   path('admin/', admin.site.urls),
 
 ]

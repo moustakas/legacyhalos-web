@@ -6,13 +6,15 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 def list(req):
-    centrals_filter = CentralsFilter(req.GET, queryset=Centrals.objects.all().order_by('mem_match_id')).qs
-    paginator = Paginator(centrals_filter, 50)
-    page = req.GET.get('page')
-    result = paginator.get_page(page)
-    return render(req, 'list.html', {'result': result})
+    cen_filtered = CentralsFilter(req.GET, queryset=Centrals.objects.all().order_by('mem_match_id')).qs
+    #cen_filtered.save()
+    paginator = Paginator(cen_filtered, 50)
+    page_num = req.GET.get('page')
+    page = paginator.get_page(page_num)
+    return render(req, 'list.html', {'page': page})
 
 def index(req):
     return render(req, 'index.html')
 
-
+def centrals(req):
+    return render(req, 'centrals.html') 

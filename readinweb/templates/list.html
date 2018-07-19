@@ -49,11 +49,12 @@ List of halos
 <tr><th scope="col">Number</th><th scope="col" style="min-width:135px">redMaPPer ID</th><th>RA</th><th scope="col">Dec</th><th scope="col">Redshift</th><th scope="col">Richness</th><th scope="col">Viewer</th><th scope="col">SkyServer</th></tr>
 </thead>
 <tbody>
-  {% for cen in result %}
-<tr><td><script>
-document.write({{ forloop.counter0}} + {{result.start_index }})
-</script></td>
-<td><a href="http://portal.nersc.gov/project/cosmo/temp/ioannis/legacyhalos/{{cen.mem_match_id_string}}/{{cen.mem_match_id_string }}.html">{{ cen.mem_match_id_string}}</a></td>
+  {% for cen in page %}
+<tr><script>
+var index = {{ forloop.counter0}} + {{page.start_index }};
+document.write('<td>'+index+'</td>');
+document.write('<td><a href="{{BASE_URL}}centrals.html?index='+index+'">{{cen.mem_match_id_string}}</a></td>');
+</script>
 <td><script>
   var ra = {{ cen.ra }};
   ra = ra.toFixed(7);
@@ -79,21 +80,21 @@ document.write({{ forloop.counter0}} + {{result.start_index }})
 </tbody>
   </table>
 
-<div class="pagination">
+<div style="text-align:center; padding: 10;">
     <span class="step-links">
-        {% if result.has_previous %}
+        {% if page.has_previous %}
             <a href="?{% url_replace request 'page' 1 %}">&laquo; first</a>
-            <a href="?{% url_replace request 'page' result.previous_page_number %}">previous</a>
+            <a href="?{% url_replace request 'page' page.previous_page_number %}">previous</a>
         {% endif %}
 
         <span class="current">
-            Page {{ result.number }} of {{ result.paginator.num_pages }}
+            Page {{ page.number }} of {{ page.paginator.num_pages }}
         </span>
 
-        {% if result.has_next %}
+        {% if page.has_next %}
             
-            <a href="?{% url_replace request 'page' result.next_page_number %}">next</a>
-            <a href="?{% url_replace request 'page' result.num_pages %}">last &raquo;</a>
+            <a href="?{% url_replace request 'page' page.next_page_number %}">next</a>
+            <a href="?{% url_replace request 'page' page.num_pages %}">last &raquo;</a>
         {% endif %}
     </span>
 </div>
