@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load my_templatetag %}
 
 {% block title %}
 List of halos
@@ -24,7 +25,7 @@ List of halos
     </tr>
     <tr>
          <th><label for="rahi">RA high:</label></th>
-         <td><input id="rahi" name="ra__lt" type="number" value="{{ filter.form.ra__lt.value|default_if_none:'100'}}"/></td> 
+         <td><input id="rahi" name="ra__lt" type="number" value="{{ filter.form.ra__lt.value|default_if_none:'200'}}"/></td> 
     </tr>
     <p></p>
     <tr>
@@ -49,7 +50,9 @@ List of halos
 </thead>
 <tbody>
   {% for cen in result %}
-<tr><td>{{ forloop.counter }}</td>
+<tr><td><script>
+document.write({{ forloop.counter0}} + {{result.start_index }})
+</script></td>
 <td><a href="http://portal.nersc.gov/project/cosmo/temp/ioannis/legacyhalos/{{cen.mem_match_id_string}}/{{cen.mem_match_id_string }}.html">{{ cen.mem_match_id_string}}</a></td>
 <td><script>
   var ra = {{ cen.ra }};
@@ -79,8 +82,8 @@ List of halos
 <div class="pagination">
     <span class="step-links">
         {% if result.has_previous %}
-            <a href="{{ request.get_full_path }}&page=1">&laquo; first</a>
-            <a href="{{ request.get_full_path }}&page={{ result.previous_page_number }}">previous</a>
+            <a href="?{% url_replace request 'page' 1 %}">&laquo; first</a>
+            <a href="?{% url_replace request 'page' result.previous_page_number %}">previous</a>
         {% endif %}
 
         <span class="current">
@@ -89,8 +92,8 @@ List of halos
 
         {% if result.has_next %}
             
-            <a href="{{ request.get_full_path }}&page={{ result.next_page_number }}">next</a>
-            <a href="{{ request.get_full_path }}&page={{ result.paginator.num_pages }}">last &raquo;</a>
+            <a href="?{% url_replace request 'page' result.next_page_number %}">next</a>
+            <a href="?{% url_replace request 'page' result.num_pages %}">last &raquo;</a>
         {% endif %}
     </span>
 </div>
