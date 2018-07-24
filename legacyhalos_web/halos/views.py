@@ -1,6 +1,6 @@
 #In Halos
 from django.shortcuts import render
-from readinweb.models import Centrals
+from legacyhalos_web.models import Centrals
 from .filters import CentralsFilter
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.core.serializers.json import DjangoJSONEncoder

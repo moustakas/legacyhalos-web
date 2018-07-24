@@ -1,9 +1,9 @@
 import os,sys
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "readinweb.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "legacyhalos_web.settings")
 import django
 django.setup()
 
-from readinweb.models import Centrals
+from legacyhalos_web.models import Centrals
 import csv
 from astropy.table import Table
 

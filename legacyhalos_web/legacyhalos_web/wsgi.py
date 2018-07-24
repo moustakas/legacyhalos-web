@@ -1,5 +1,5 @@
 """
-WSGI config for readinweb project.
+WSGI config for legacyhalos_web project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "readinweb.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "legacyhalos_web.settings")
 
 application = get_wsgi_application()

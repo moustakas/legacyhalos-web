@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'readinweb',
+    'legacyhalos_web',
     'halos',
 ]
 
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'readinweb.urls'
+ROOT_URLCONF = 'legacyhalos_web.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
-WSGI_APPLICATION = 'readinweb.wsgi.application'
+WSGI_APPLICATION = 'legacyhalos_web.wsgi.application'
 
 
 # Database

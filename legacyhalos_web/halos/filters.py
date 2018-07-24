@@ -1,5 +1,5 @@
 import django_filters
-from readinweb.models import Centrals
+from legacyhalos_web.models import Centrals
 
 class CentralsFilter(django_filters.FilterSet):
     #ra = django_filters.NumberFilter()
