@@ -21,20 +21,20 @@ List of halos
     <p></p>
     <tr>
          <th><label for="ralo">RA low:</label></th>
-         <td><input id="ralo" name="ra__gt" type="number" value="{{ filter.form.ra__gt.value|default_if_none:'100'}}"/></td> 
+         <td><input id="ralo" name="ra__gt" step="0.01" type="number" value="{{ filter.form.ra__gt.value|default_if_none:'100'}}"/></td> 
     </tr>
     <tr>
          <th><label for="rahi">RA high:</label></th>
-         <td><input id="rahi" name="ra__lt" type="number" value="{{ filter.form.ra__lt.value|default_if_none:'200'}}"/></td> 
+         <td><input id="rahi" name="ra__lt" step="0.01" type="number" value="{{ filter.form.ra__lt.value|default_if_none:'200'}}"/></td> 
     </tr>
     <p></p>
     <tr>
          <th><label for="declo">Dec low:</label></th>
-         <td><input id="declo" name="dec__gt" type="number" value="{{ filter.form.dec__gt.value|default_if_none:'0' }}"/></td> 
+         <td><input id="declo" name="dec__gt" step="0.01" type="number" value="{{ filter.form.dec__gt.value|default_if_none:'0' }}"/></td> 
     </tr>
     <tr>
          <th><label for="dechi">Dec high:</label></th>
-         <td><input id="dechi" name="dec__lt" type="number" value="{{ filter.form.dec__lt.value|default_if_none:'10' }}"/></td> 
+         <td><input id="dechi" name="dec__lt" step="0.01" type="number" value="{{ filter.form.dec__lt.value|default_if_none:'10' }}"/></td> 
     </tr>
     <br></br>
     <p>
@@ -43,6 +43,8 @@ List of halos
   </form>
 
 </center>
+<p class="search_log">Showing {{ page.start_index }} - {{ page.end_index }} of {{paginator.count}}</p>
+<p class="search_log"> {% url_pull request %} </p>
 
 <table class="table">
 <thead>
@@ -94,7 +96,7 @@ document.write('<td><a href="{{BASE_URL}}centrals.html?index='+index+'">{{cen.me
         {% if page.has_next %}
             
             <a href="?{% url_replace request 'page' page.next_page_number %}">next</a>
-            <a href="?{% url_replace request 'page' page.num_pages %}">last &raquo;</a>
+            <a href="?{% url_replace request 'page' paginator.num_pages %}">last &raquo;</a>
         {% endif %}
     </span>
 </div>
