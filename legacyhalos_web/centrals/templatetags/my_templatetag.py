@@ -36,6 +36,11 @@ def url_pull(req):
     return search
 
 @register.simple_tag
+def photo_pull(req, id_num, img_name):
+    path = "static/data/" + id_num + "/" + id_num + "-" + img_name 
+    return path    
+
+@register.simple_tag
 def viewer_link(ra, dec):
     baseurl = 'http://legacysurvey.org/viewer/'
     viewer = '{}?ra={:.6f}&dec={:.6f}&zoom=15&layer=decals-dr5'.format(
