@@ -43,7 +43,9 @@ List of halos
   </form>
 
 </center>
-<p class="search_log">Showing {{ page.start_index }} - {{ page.end_index }} of {{paginator.count}}</p>
+<script>
+document.write('<p class="search_log">Showing '+({{ page.start_index }}-1)+' - '+({{ page.end_index }}-1)+' of '+({{paginator.count}}-1)+'</p>')
+</script>
 <p class="search_log"> {% url_pull request %} </p>
 
 <table class="table">
@@ -53,9 +55,9 @@ List of halos
 <tbody>
   {% for cen in page %}
 <tr><script>
-var index = {{ forloop.counter0}} + {{page.start_index }};
+var index = {{ forloop.counter0}} + {{page.start_index }} - 1;
 document.write('<td>'+index+'</td>');
-document.write('<td><a href="{{BASE_URL}}centrals.html?index='+index+'">{{cen.mem_match_id_string}}</a></td>');
+document.write('<td><a href="{{BASE_URL}}centrals?index='+index+'">{{cen.mem_match_id_string}}</a></td>');
 </script>
 <td><script>
   var ra = {{ cen.ra }};

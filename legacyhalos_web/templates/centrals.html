@@ -9,8 +9,8 @@ Central Galaxy ...
 {% block content %}
 
 <h1>Central Galaxy {{ cen.mem_match_id_string }}</h1>
-<a href="../list?">Search</a>
 <a href="../">Home</a>
+<a href="../list?">Search</a>
 <br />
 <a href="?{% url_replace request 'index' next_index %}">Next Central Galaxy</a>
 <br />
@@ -18,7 +18,7 @@ Central Galaxy ...
 <br />
 <br />
 
-<table class="table">
+<table class="cen_table" border="1" cellpadding="8">
 <thead>
 <tr>
 <th>Number</th>
@@ -64,17 +64,17 @@ Central Galaxy ...
 <h2>Image mosaics</h2>
 <p>Each mosaic (left to right: data, model of all but the central galaxy, residual image containing just the central galaxy) is 300 kpc by 300 kpc.</p>
 <table width="90%">
-<tr><td><a href=""><img src="{% photo_pull request cen.mem_match_id_string 'coadd-montage.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-coadd-montage.png" height="auto" width="100%" ></a></td></tr>
+<tr><td><a href=""><img src="{% photo_pull request cen.mem_match_id_string 'coadd-montage.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-coadd-montage.png" height="auto" width="80%" ></a></td></tr>
 </table>
 <h2>Elliptical Isophote Analysis</h2>
 <table width="90%">
 <tr>
-<td><a href="0000045-ellipse-multiband.png"><img src="0000045-ellipse-multiband.png" alt="Missing file 0000045-ellipse-multiband.png" height="auto" width="100%"></a></td>
+<td><a href="{{ cen.mem_match_id_string }}-ellipse-multiband.png"><img src="{% photo_pull request cen.mem_match_id_string 'ellipse-multiband.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-ellipse-multiband.png" height="auto" width="80%"></a></td>
 </tr>
 </table>
 <table width="90%">
 <tr>
-<td width="50%"><a href="0000045-ellipse-sbprofile.png"><img src="0000045-ellipse-sbprofile.png" alt="Missing file 0000045-ellipse-sbprofile.png" height="auto" width="100%"></a></td>
+<td width="50%"><a href="{{ cen.mem_match_id_string }}-ellipse-sbprofile.png"><img src="{% photo_pull request cen.mem_match_id_string 'ellipse-sbprofile.png'%}" alt="Missing file {{ cen.mem_match_id_string }}-ellipse-sbprofile.png" height="auto" width="80%"></a></td>
 <td></td>
 </tr>
 </table>
@@ -84,22 +84,22 @@ Central Galaxy ...
 <th>Single Sersic (No Wavelength Dependence)</th><th>Single Sersic</th>
 </tr>
 <tr>
-<td><a href="0000045-sersic-single-nowavepower.png"><img src="0000045-sersic-single-nowavepower.png" alt="Missing file 0000045-sersic-single-nowavepower.png" height="auto" width="100%"></a></td>
-<td><a href="0000045-sersic-single.png"><img src="0000045-sersic-single.png" alt="Missing file 0000045-sersic-single.png" height="auto" width="100%"></a></td>
+<td><a href="{{ cen.mem_match_id_string }}-sersic-single-nowavepower.png"><img src="{% photo_pull request cen.mem_match_id_string 'sersic-single-nowavepower.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-sersic-single-nowavepower.png" height="auto" width="80%"></a></td>
+<td><a href="{{ cen.mem_match_id_string }}-sersic-single.png"><img src="{% photo_pull request cen.mem_match_id_string 'sersic-single.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-sersic-single.png" height="auto" width="80%"></a></td>
 </tr>
 <tr>
 <th>Sersic+Exponential (No Wavelength Dependence)</th><th>Sersic+Exponential</th>
 </tr>
 <tr>
-<td><a href="0000045-sersic-exponential-nowavepower.png"><img src="0000045-sersic-exponential-nowavepower.png" alt="Missing file 0000045-sersic-exponential-nowavepower.png" height="auto" width="100%"></a></td>
-<td><a href="0000045-sersic-exponential.png"><img src="0000045-sersic-exponential.png" alt="Missing file 0000045-sersic-exponential.png" height="auto" width="100%"></a></td>
+<td><a href="{{ cen.mem_match_id_string }}-sersic-exponential-nowavepower.png"><img src="{% photo_pull request cen.mem_match_id_string 'sersic-exponential-nowavepower.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-sersic-exponential-nowavepower.png" height="auto" width="80%"></a></td>
+<td><a href="{{ cen.mem_match_id_string }}-sersic-exponential.png"><img src="{% photo_pull request cen.mem_match_id_string 'sersic-exponential.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-sersic-exponential.png" height="auto" width="80%"></a></td>
 </tr>
 <tr>
 <th>Double Sersic (No Wavelength Dependence)</th><th>Double Sersic</th>
 </tr>
 <tr>
-<td><a href="0000045-sersic-double-nowavepower.png"><img src="0000045-sersic-double-nowavepower.png" alt="Missing file 0000045-sersic-double-nowavepower.png" height="auto" width="100%"></a></td>
-<td><a href="0000045-sersic-double.png"><img src="0000045-sersic-double.png" alt="Missing file 0000045-sersic-double.png" height="auto" width="100%"></a></td>
+<td><a href="{{ cen.mem_match_id_string }}-sersic-double-nowavepower.png"><img src="{% photo_pull request cen.mem_match_id_string 'sersic-double-nowavepower.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-sersic-double-nowavepower.png" height="auto" width="80%"></a></td>
+<td><a href="{{ cen.mem_match_id_string }}-sersic-double.png"><img src="{% photo_pull request cen.mem_match_id_string 'sersic-double.png' %}" alt="Missing file {{ cen.mem_match_id_string }}-sersic-double.png" height="auto" width="80%"></a></td>
 </tr>
 </table>
 <br />

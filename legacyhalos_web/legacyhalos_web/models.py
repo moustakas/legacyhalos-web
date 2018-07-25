@@ -6,7 +6,7 @@ class Centrals(Model):
     ra = FloatField(null=True)
     dec = FloatField(null=True)
     mem_match_id = FloatField(null=True)
-    mem_match_id_string = CharField(max_length=7, null=True)
+    mem_match_id_string = CharField(max_length=7, null=False, primary_key = True)
     z = FloatField(null=True)
     la = FloatField(null=True)
     sdss_objid = FloatField(null=True)
