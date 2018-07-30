@@ -8,54 +8,68 @@ List of halos
 
 
 {% block content %}
+
 <center>
   <h2 id="filterhead">
     Filter Table Contents
  </h2>
+<a href="../" style="float: left; margin-left: 20px;">Home</a>
   <form method="get">
+<table>
    <!-- {{ filter.form.as_p }} -->
     <tr>
-         <th><label for="id">redMaPPer ID:</label></th>
-         <td><input id="id" name="mem_match_id" type="number" value="{{ filter.form.mem_match_id.value}}"/></td> 
-    </tr>
-    <p></p>
-    <tr>
-         <th><label for="ralo">RA low:</label></th>
-         <td><input id="ralo" name="ra__gt" step="0.01" type="number" value="{{ filter.form.ra__gt.value|default_if_none:'100'}}"/></td> 
+         <th class="search_th"><label for="idlo">redMaPPer ID:</label></th>
+         <td><input id="idlo" name="mem_match_id__gte" type="number" value=""
+         placeholder="min" min="0"/></td> 
+         <td><input id="idhi" name="mem_match_id__lte" type="number" value="" placeholder="max" min="0"/></td> 
     </tr>
     <tr>
-         <th><label for="rahi">RA high:</label></th>
-         <td><input id="rahi" name="ra__lt" step="0.01" type="number" value="{{ filter.form.ra__lt.value|default_if_none:'200'}}"/></td> 
-    </tr>
-    <p></p>
-    <tr>
-         <th><label for="declo">Dec low:</label></th>
-         <td><input id="declo" name="dec__gt" step="0.01" type="number" value="{{ filter.form.dec__gt.value|default_if_none:'0' }}"/></td> 
+         <th class="search_th"><label for="ralo">RA:</label></th>
+         <td><input id="ralo" name="ra__gte" step="0.01" type="number" value="" placeholder="min"/></td> 
+         <td><input id="rahi" name="ra__lte" step="0.01" type="number" value="" placeholder="max"/></td> 
     </tr>
     <tr>
-         <th><label for="dechi">Dec high:</label></th>
-         <td><input id="dechi" name="dec__lt" step="0.01" type="number" value="{{ filter.form.dec__lt.value|default_if_none:'10' }}"/></td> 
+         <th class="search_th"><label for="declo">Dec:</label></th>
+         <td><input id="declo" name="dec__gte" step="0.01" type="number" value="" placeholder="min"/></td> 
+         <td><input id="dechi" name="dec__lte" step="0.01" type="number" value="" placeholder="max"/></td> 
     </tr>
-    <br></br>
-    <p>
-    <button type="submit" class="btn btn-primary">Search</button>
-    </p> 
+    <tr>
+         <th class="search_th"><label for="zlo">Redshift:</label></th>
+         <td><input id="zlo" name="z__gte" step="0.01" type="number" value="" placeholder="min" min="0"/></td> 
+         <td><input id="zhi" name="z__lte" step="0.01" type="number" value="" placeholder="max" min="0"/></td> 
+    </tr>
+    <tr>
+         <th class="search_th"><label for="lalo">Richness:</label></th>
+         <td><input id="lalo" name="la__gte" step="0.01" type="number" value="" placeholder="min" min="0"/></td> 
+         <td><input id="lahi" name="la__lte" step="0.01" type="number" value="" placeholder="max" min="0"/></td> 
+    </tr>
+   
+</table>
+    <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Search</button>
+     
   </form>
 
 </center>
 <script>
-document.write('<p class="search_log">Showing '+({{ page.start_index }}-1)+' - '+({{ page.end_index }}-1)+' of '+({{paginator.count}}-1)+'</p>')
+document.write('<p class="search_log">Showing '+({{ page.start_index }})+' - '+({{ page.end_index }})+' of '+({{paginator.count}})+'</p>')
 </script>
-<p class="search_log"> {% url_pull request %} </p>
+<pre class="search_log" > {% url_pull request %} </pre>
 
 <table class="table">
 <thead>
-<tr><th scope="col">Number</th><th scope="col" style="min-width:135px">redMaPPer ID</th><th>RA</th><th scope="col">Dec</th><th scope="col">Redshift</th><th scope="col">Richness</th><th scope="col">Viewer</th><th scope="col">SkyServer</th></tr>
+<tr><th>Number</th>
+<th style="min-width:155px"><a href="?{% url_replace_sort request 'mem_match_id' %}">redMaPPer ID</a></th>
+<th><a href="?{% url_replace_sort request 'ra' %}">RA</a></th>
+<th><a href="?{% url_replace_sort request 'dec' %}">Dec</a></th>
+<th><a href="?{% url_replace_sort request 'z' %}">Redshift</a></th>
+<th><a href="?{% url_replace_sort request 'la' %}">Richness</a></th>
+<th>Viewer</th>
+<th>SkyServer</th></tr>
 </thead>
 <tbody>
   {% for cen in page %}
 <tr><script>
-var index = {{ forloop.counter0}} + {{page.start_index }} - 1;
+var index = {{ forloop.counter0}} + {{page.start_index }};
 document.write('<td>'+index+'</td>');
 document.write('<td><a href="{{BASE_URL}}centrals?index='+index+'">{{cen.mem_match_id_string}}</a></td>');
 </script>
