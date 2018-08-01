@@ -49,11 +49,18 @@ List of halos
      
   </form>
 
-</center>
+
 <script>
 document.write('<p class="search_log">Showing '+({{ page.start_index }})+' - '+({{ page.end_index }})+' of '+({{paginator.count}})+'</p>')
 </script>
 <pre class="search_log" > {% url_pull request %} </pre>
+
+<form method="post">
+{% csrf_token %}
+<button href="" type="submit" class="btn btn-primary" name="dbutn" >Download</button>
+
+</form>
+</center>
 
 <table class="table">
 <thead>
