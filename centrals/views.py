@@ -1,13 +1,16 @@
-from django.shortcuts import render
-from legacyhalos_web.models import Centrals
-from .filters import CentralsFilter
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import HttpResponse
+import os
 import pickle
 import tempfile
-import os
+import numpy as np
+
 import astropy.io.fits
-from astropy.table import Table
+from astropy.table import Table, Column
+
+from django.shortcuts import render
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.http import HttpResponse
+from .filters import CentralsFilter
+from legacyhalos_web.models import Centrals
 
 def list(req):
     sort = 'mem_match_id'
@@ -19,8 +22,22 @@ def list(req):
     paginator = Paginator(cen_filtered, 50)
     page_num = req.GET.get('page')
     page = paginator.get_page(page_num)
-    if req.method== 'POST':
-        return download(req)
+    if req.method == 'POST':
+        # Ideally, this step would grab the full set of data from the parent
+        # FITS file (before it's loaded into Django in load.py).  So this is a
+        # hack!
+        data = Table()
+        for col in ('objid', 'ra', 'dec', 'morphtype', 'z',
+                    'la', 'sdss_objid'):
+            data[col] = [getattr(cc, col) for cc in cen_filtered]
+            
+        # Write the FITS file contents...
+        f, tmpfn = tempfile.mkstemp(suffix='.fits')
+        os.close(f)
+        os.unlink(tmpfn)
+        data.write(tmpfn)
+        return send_file(tmpfn, 'image/fits', unlink=True, filename='results.fits')
+    
     return render(req, 'list.html', {'page': page, 'paginator': paginator})
 
 def index(req):

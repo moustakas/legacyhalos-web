@@ -38,8 +38,11 @@ for row in data:
     centrals.z = row[5]
     centrals.la = row[6]
     centrals.sdss_objid = row[7]
-    centrals.viewer_link = centrals.viewer_link()
-    centrals.skyserver_link = centrals.skyserver_link()
+    #centrals.viewer_link = centrals.viewer_link()
+    #centrals.skyserver_link = centrals.skyserver_link()
+    centrals.viewer_link = 'http://legacysurvey.org/viewer/?ra={:.6f}&dec={:.6f}&zoom=15&layer=decals-dr5'.format(centrals.ra, centrals.dec)
+    centrals.skyserver_link = 'http://skyserver.sdss.org/dr14/en/tools/explore/summary.aspx?id={}'.format(centrals.sdss_objid)
+    
     centrals.save()
 
 ## for row in data:
