@@ -1,6 +1,8 @@
 # legacyhalos-web
 Website for the legacyhalos project(s).
 
+about migrations, load.py, etc
+
 add link if there are any good examples on anything here 
 load.py & models explination...
 Start by running the manage.py file and declaring the server domain (python manage.py runserver nyx.siena.edu:8888).
