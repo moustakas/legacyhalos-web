@@ -6,15 +6,18 @@ Website for the legacyhalos project(s).
 When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated. 
 The manner in which a file is loaded is through the load.py file. load.py has the specifications on the file format (our file is a .fits file) and creates the objects (in our case Central objects), then stores them in the database that it created.
 The order of the commands are:
+0. rm db.sqlite3
 1. python manage.py makemigrations legacyhalos_web
 2. python manage.py migrate
 3. python load.py
-This sequence of commands only have to happen when the user wants to populate or update the database. 
+
+This sequence of commands only have to happen when the user wants to populate or update the database.
 
 add link if there are any good examples on anything here 
 
-## 
-load.py & models explination...
+## Central Objects
+The object type that is being used are called Centrals. This object type was created in legacyhalos_web/models.py.
+models explination...
 
 Start by running the manage.py file and declaring the server domain (python manage.py runserver nyx.siena.edu:8888).
 This will inturn look through the settings file. Everything in the settings page is loaded, and the BASE_URL is defined (along with the STATIC_URL). The templates directory holds the html setup for the webpages. base.html holds the general style while index.html holds the home webpage (talk about static directory). Each webpage created is created here, and extends to base.html. In our homepage, there is a link that appends list$ to the base url. All of the possible url paths are contained within the urls.py found inside legacyhalos_web. Appending the list$ to the url calls for the list function found in views.py. 
