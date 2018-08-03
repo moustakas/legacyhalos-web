@@ -25,6 +25,7 @@ SECRET_KEY = 'eok&i&(7=!8u%9lr48%pks9x7pfp7b=a6^p)^ldscte+t&_tz+'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+DEBUG = False
 
 ALLOWED_HOSTS = ['nyx.siena.edu', 'localhost', 'galaxy.siena.edu']
 
