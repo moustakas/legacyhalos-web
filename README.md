@@ -3,7 +3,27 @@ Website for legacyhalos project(s).
 
 ## Creating a Django Project
 To start creating a project, after django is installed, run this command:
-django-admin startproject mysite
+- django-admin startproject mysite (replace mysite with the name of the website you want to create)
+
+This will create a folder hierarchy that resembles this:
+--this should be indented properly vvv
+
+mysite/
+    manage.py
+    mysite/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+
+
+manage.py is the location that the server is exected from when testing the functionality.
+settings.py contains the general setting for the website.
+urls.py contains the paths to other pages via url.
+wsgi.py is how the server host interacts with the website created.
+
+## Our File Hierarchy and Dependencies
+![alt text](https://docs.google.com/drawings/d/e/2PACX-1vRLhdgoZOds5w9cVZbfOI25HLPWE3lf5-u6W_XQV3KOqfM8crgQpBGdiFFyqCfh_Ryh_CWbQmKawKJR/pub?w=1337&h=691 "Project Structure Diagram")
 
 ## Creating the Database from a File
 When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated. 
@@ -15,8 +35,7 @@ The order of the commands are:
 4. python load.py
 
 This sequence of commands only have to happen when the user wants to populate or update the database.
-
-add link if there are any good examples on anything here 
+The load.py puts all of the objects created within the query set (saved as db.sqlite3). For more information, go to: https://docs.djangoproject.com/en/2.0/topics/db/queries/
 
 ## Central Objects
 The object type that is being used are called Centrals. This object type was created in legacyhalos_web/models.py.
@@ -38,4 +57,4 @@ takes the current index of the object that was pressed on, and takes the session
 
 returns the inforation we are telling it to and calls for the centrals.html page inside of templates
 
-![alt text](https://docs.google.com/drawings/d/e/2PACX-1vRLhdgoZOds5w9cVZbfOI25HLPWE3lf5-u6W_XQV3KOqfM8crgQpBGdiFFyqCfh_Ryh_CWbQmKawKJR/pub?w=1337&h=691 "Project Structure Diagram")
+
