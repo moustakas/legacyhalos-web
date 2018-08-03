@@ -1,10 +1,19 @@
 # legacyhalos-web
 Website for the legacyhalos project(s).
 
-about migrations, load.py, etc
+
+## Creating the Database from a File
+When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated. 
+The manner in which a file is loaded is through the load.py file. load.py has the specifications on the file format (our file is a .fits file) and creates the objects (in our case Central objects), then stores them in the database that it created.
+The order of the commands are:
+1. python manage.py makemigrations legacyhalos_web
+2. python manage.py migrate
+3. python load.py
+This sequence of commands only have to happen when the user wants to populate or update the database. 
 
 add link if there are any good examples on anything here 
 
+## 
 load.py & models explination...
 
 Start by running the manage.py file and declaring the server domain (python manage.py runserver nyx.siena.edu:8888).
