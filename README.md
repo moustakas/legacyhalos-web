@@ -1,6 +1,9 @@
 # legacyhalos-web
-Website for the legacyhalos project(s).
+Website for legacyhalos project(s).
 
+## Creating a Django Project
+To start creating a project, after django is installed, run this command:
+django-admin startproject mysite
 
 ## Creating the Database from a File
 When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated. 
