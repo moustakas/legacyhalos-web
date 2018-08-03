@@ -6,10 +6,10 @@ Website for the legacyhalos project(s).
 When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated. 
 The manner in which a file is loaded is through the load.py file. load.py has the specifications on the file format (our file is a .fits file) and creates the objects (in our case Central objects), then stores them in the database that it created.
 The order of the commands are:
-0. rm db.sqlite3
-1. python manage.py makemigrations legacyhalos_web
-2. python manage.py migrate
-3. python load.py
+1. rm db.sqlite3
+2. python manage.py makemigrations legacyhalos_web
+3. python manage.py migrate
+4. python load.py
 
 This sequence of commands only have to happen when the user wants to populate or update the database.
 
