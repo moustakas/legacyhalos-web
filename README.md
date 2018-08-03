@@ -37,3 +37,5 @@ in the urls.py, this then calls for the centrals function in views.py
 takes the current index of the object that was pressed on, and takes the session created form the search result
 
 returns the inforation we are telling it to and calls for the centrals.html page inside of templates
+
+![alt text](https://docs.google.com/drawings/d/e/2PACX-1vRLhdgoZOds5w9cVZbfOI25HLPWE3lf5-u6W_XQV3KOqfM8crgQpBGdiFFyqCfh_Ryh_CWbQmKawKJR/pub?w=1337&h=691 "Project Structure Diagram")
