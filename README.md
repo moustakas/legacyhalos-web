@@ -8,13 +8,13 @@ To start creating a project, after django is installed, run this command:
 This will create a folder hierarchy that resembles this:
 --this should be indented properly vvv
 
-mysite/
-    manage.py
-    mysite/
-        __init__.py
-        settings.py
-        urls.py
-        wsgi.py
+* mysite/
+  * manage.py
+  * mysite/
+    * __init__.py
+    * settings.py
+    * urls.py
+    * wsgi.py
 
 
 manage.py is the location that the server is exected from when testing the functionality.
