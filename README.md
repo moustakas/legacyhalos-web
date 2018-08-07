@@ -17,20 +17,17 @@ This will create a folder hierarchy that resembles this:
     * wsgi.py
 
 
-manage.py is the location that the server is executed from when testing the functionality.
-
-settings.py contains the general settings for the entire website.
-
-urls.py contains the paths to the site's known pages via url.
-
+manage.py is the location that the server is executed from when testing the functionality.  
+settings.py contains the general settings for the entire website.  
+urls.py contains the paths to the site's known pages via url.  
 wsgi.py is how the server host interacts with the website created.
 
 ## Our File Hierarchy and Dependencies
 ![alt text](https://docs.google.com/drawings/d/e/2PACX-1vRLhdgoZOds5w9cVZbfOI25HLPWE3lf5-u6W_XQV3KOqfM8crgQpBGdiFFyqCfh_Ryh_CWbQmKawKJR/pub?w=1337&h=691 "Project Structure Diagram")
 
 ## Creating the Database from a File
-When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated. 
-A data file is loaded through load.py, which has the specifications on the file format (ours is a .fits file) and creates the database table for the model (in our case Centrals model), then populates the table with the specified fields.
+When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated.  
+A data file is loaded through load.py, which has the specifications on the file format (ours is a .fits file) and creates the database table for the model (in our case Centrals model), then populates the table with the specified fields.  
 The order of the commands are:
 
     >>> rm db.sqlite3
@@ -39,16 +36,14 @@ The order of the commands are:
     >>> python load.py
 
 This sequence of commands only have to happen when the user wants to populate or update the database.
-The load.py puts all of the objects created within the query set (saved as db.sqlite3). For more information, go to: https://docs.djangoproject.com/en/2.0/topics/db/queries/
+The load.py puts all of the objects created within the query set (saved as db.sqlite3). For more information, go to: [Django Query Reference](https://docs.djangoproject.com/en/2.0/topics/db/queries/)
 
 ## Website Set-Up
 
 ### Central Model and Filter
-Our website uses only one model, called Centrals. This model was created in legacyhalos_web/models.py as a table in the database with the fields listed stored as columns. It is populated by load.py with individual Central objects as rows. See documentation on models here:
-https://docs.djangoproject.com/en/2.0/topics/db/models/
+Our website uses only one model, called Centrals. This model was created in legacyhalos_web/models.py as a table in the database with the fields listed stored as columns. It is populated by load.py with individual Central objects as rows. See [documentation on models](https://docs.djangoproject.com/en/2.0/topics/db/models/)
 
-filter.py is used to put a filter on the Centrals model, in order to select rows of the Centrals table that fit the given criteria. The filter is applied to a queryset, which is created from the Centrals model. We can then use the filter to create a form in our html page that connects to the database. We used a Django NumberFilter for several fields to allow filtering for min and max values on any of those fields. See more information on Filters here: 
-https://django-filter.readthedocs.io/en/master/ref/filters.html
+filter.py is used to put a filter on the Centrals model, in order to select rows of the Centrals table that fit the given criteria. The filter is applied to a queryset, which is created from the Centrals model. We can then use the filter to create a form in our html page that connects to the database. We used a Django NumberFilter for several fields to allow filtering for min and max values on any of those fields. See more here: [information on Filters](https://django-filter.readthedocs.io/en/master/ref/filters.html)
 
 ## Running the Server
 Start by running the manage.py file and declaring the server domain (python manage.py runserver nyx.siena.edu:8888).
