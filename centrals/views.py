@@ -55,7 +55,7 @@ def centrals(req):
        next_index = 1
     return render(req, 'centrals.html', {'cen_list': cen_list, 'index': index, 'cen': cen, 'next_index': next_index, 'prev_index': prev_index})
 
-def download(req):
+#def download(req):
     #cen_list = pickle.loads(req.session['results_list'])
     #for cen in cen_list:req.GET.get('
     #    table
@@ -67,16 +67,16 @@ def download(req):
     #table = Table(rows=data_rows, names=('a','b','c'))
     #table.write
     #table = fits_table()
-    table = Table([[1, 2], [4, 5], [7, 8]], names=('a', 'b', 'c'))
+    #table = Table([[1, 2], [4, 5], [7, 8]], names=('a', 'b', 'c'))
     #tempfiletable =  tempfile.mkstemp(suffix='.fits')
     #table.write(tempfiletable, format='fits')
     #table.x = np.arange(3)
-    f,tmpfn = tempfile.mkstemp(suffix='.fits')
-    os.close(f)
-    os.unlink(tmpfn)
+    #f,tmpfn = tempfile.mkstemp(suffix='.fits')
+    #os.close(f)
+    #os.unlink(tmpfn)
     # Write the FITS file contents...
-    table.write(tmpfn)
-    return send_file(tmpfn, 'image/fits', unlink=True, filename='results.fits')
+    #table.write(tmpfn)
+    #return send_file(tmpfn, 'image/fits', unlink=True, filename='results.fits')
 
 
 def send_file(fn, content_type, unlink=False, modsince=None, expires=3600,
