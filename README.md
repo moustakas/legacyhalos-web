@@ -45,12 +45,16 @@ Our website uses only one model, called Centrals. This model was created in lega
 
 filter.py is used to put a filter on the Centrals model, in order to select rows of the Centrals table that fit the given criteria. The filter is applied to a queryset, which is created from the Centrals model. We can then use the filter to create a form in our html page that connects to the database. We used a Django NumberFilter for several fields to allow filtering for min and max values on any of those fields. See more here: [information on Filters](https://django-filter.readthedocs.io/en/master/ref/filters.html)
 
-### Setting up Webpages
+### Templates and Webpages
 
-The templates directory holds the html setup for the webpages. base.html holds the general style while index.html holds the home webpage (talk about static directory). Each webpage created is created here, and extends base.html. In our homepage, there is a link that appends list$ to the base url. All of the possible url paths are contained within the urls.py found inside legacyhalos_web. Appending the list$ to the url calls for the list function found in views.py. 
+Django uses templates within html code in order to execute code to dynamically generate the webpage html. Templates are denoted by {{ with code inside }} or {% with other code inside %}. Read more on: [Django Template Language](https://docs.djangoproject.com/en/2.0/ref/templates/language/) or [Built in and Custom Templates](https://docs.djangoproject.com/en/2.0/topics/templates/) 
+
+The templates directory at the project root holds the html setup for the webpages in the files base.html, index.html, list.html, and centrals.html. base.html holds the general style we reuse on each individual page. At the top of each page's html we make it extend base.html; load static files; and/or load our custom templatetags depending on what that page will use. 
+
+
+index.html is the homepage content.(talk about static directory). Each webpage created is created here, and extends base.html. In our homepage, there is a link that appends list$ to the base url. All of the possible url paths are contained within the urls.py found inside legacyhalos_web. Appending the list$ to the url calls for the list function found in views.py. 
 list function calls for list.html with the information we give it; pickle, paginator,
 
-template tags
 
 list.html loads everything loop that goes through each result and puts it on the table that is diplayed,  
 redMaPPer ID contains href that changed the url to the base url + centrals$,  
