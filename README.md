@@ -3,7 +3,7 @@ Website for legacyhalos project(s).
 
 ## Creating a Django Project
 To start creating a project, after django is installed, run this command:
-- django-admin startproject mysite (replace mysite with the name of the website you want to create)
+    django-admin startproject mysite (replace mysite with the name of the website you want to create)
 
 This will create a folder hierarchy that resembles this:
 
@@ -28,10 +28,10 @@ wsgi.py is how the server host interacts with the website created.
 When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated. 
 A data file is loaded through load.py, which has the specifications on the file format (ours is a .fits file) and creates the database table for the model (in our case Centrals model), then populates the table with the specified fields.
 The order of the commands are:
-1. rm db.sqlite3
-2. python manage.py makemigrations legacyhalos_web
-3. python manage.py migrate
-4. python load.py
+    rm db.sqlite3
+    python manage.py makemigrations legacyhalos_web
+    python manage.py migrate
+    python load.py
 
 This sequence of commands only have to happen when the user wants to populate or update the database.
 The load.py puts all of the objects created within the query set (saved as db.sqlite3). For more information, go to: https://docs.djangoproject.com/en/2.0/topics/db/queries/
