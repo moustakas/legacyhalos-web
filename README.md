@@ -3,6 +3,7 @@ Website for legacyhalos project(s).
 
 ## Creating a Django Project
 To start creating a project, after django is installed, run this command:
+
     django-admin startproject mysite (replace mysite with the name of the website you want to create)
 
 This will create a folder hierarchy that resembles this:
@@ -16,10 +17,10 @@ This will create a folder hierarchy that resembles this:
     * wsgi.py
 
 
-manage.py is the location that the server is executed from when testing the functionality.
-settings.py contains the general settings for the entire website.
-urls.py contains the paths to the site's known pages via url.
-wsgi.py is how the server host interacts with the website created.
+- manage.py is the location that the server is executed from when testing the functionality.
+- settings.py contains the general settings for the entire website.
+- urls.py contains the paths to the site's known pages via url.
+- wsgi.py is how the server host interacts with the website created.
 
 ## Our File Hierarchy and Dependencies
 ![alt text](https://docs.google.com/drawings/d/e/2PACX-1vRLhdgoZOds5w9cVZbfOI25HLPWE3lf5-u6W_XQV3KOqfM8crgQpBGdiFFyqCfh_Ryh_CWbQmKawKJR/pub?w=1337&h=691 "Project Structure Diagram")
@@ -28,6 +29,7 @@ wsgi.py is how the server host interacts with the website created.
 When creating a database for the website to pull from, you must first make the migrations. Making the migrations lets django know of any object specifications that were added or updated. 
 A data file is loaded through load.py, which has the specifications on the file format (ours is a .fits file) and creates the database table for the model (in our case Centrals model), then populates the table with the specified fields.
 The order of the commands are:
+
     rm db.sqlite3
     python manage.py makemigrations legacyhalos_web
     python manage.py migrate
