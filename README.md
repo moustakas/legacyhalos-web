@@ -38,7 +38,7 @@ The order of the commands are:
 This sequence of commands only have to happen when the user wants to populate or update the database.
 The load.py puts all of the objects created within the query set (saved as db.sqlite3). For more information, go to: [Django Query Reference](https://docs.djangoproject.com/en/2.0/topics/db/queries/)
 
-## Website Set-Up
+## Setting-Up Website
 
 ### Central Model and Filter
 Our website uses only one model, called Centrals. This model was created in legacyhalos_web/models.py as a table in the database with the fields listed stored as columns. It is populated by load.py with individual Central objects as rows. See [documentation on models](https://docs.djangoproject.com/en/2.0/topics/db/models/)
@@ -47,7 +47,8 @@ filter.py is used to put a filter on the Centrals model, in order to select rows
 
 ### Templates and Webpages
 
-Django uses templates within html code in order to execute code to dynamically generate the webpage html. Templates are denoted by {{ with code inside }} or {% with other code inside %}. Read more on: [Django Template Language](https://docs.djangoproject.com/en/2.0/ref/templates/language/) or [Built in and Custom Templates](https://docs.djangoproject.com/en/2.0/topics/templates/) 
+Django uses templates within html code in order to execute code to dynamically generate the webpage html. Templates are denoted by {{ with code inside }} or {% with other code inside %}. Read more on: [Django Template Language](https://docs.djangoproject.com/en/2.0/ref/templates/language/) or [Built in and Custom Templates](https://docs.djangoproject.com/en/2.0/topics/templates/)  
+We have created custom templates within centrals/templatetags/my_templatetag.py because Django knows that custom template tags will be located within a folder called templatetags. We use these in order to create and call custom python functions from within a line of html. Tags must be registered and loaded in order to use them: see [Custom template tags](https://docs.djangoproject.com/en/2.1/howto/custom-template-tags/)
 
 The templates directory at the project root holds the html setup for the webpages in the files base.html, index.html, list.html, and centrals.html. base.html holds the general style we reuse on each individual page. At the top of each page's html we make it extend base.html; load static files; and/or load our custom templatetags depending on what that page will use. 
 
