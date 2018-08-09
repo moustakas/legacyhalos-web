@@ -54,8 +54,10 @@ We have created our template tags within centrals/templatetags/my_templatetag.py
 
 The templates directory at the project root holds the html setup for the webpages in the files base.html, index.html, list.html, and centrals.html. base.html holds the general style we reuse on each individual page. At the top of each page's html we use templates to extend base.html; load static files; and/or load our custom templatetags depending on what that page will use. 
 
-index.html is the homepage content.(talk about static directory). In our homepage, there is a link that appends list$ to the base url. All of the possible url paths are contained within the urls.py found inside legacyhalos_web. Appending the list$ to the url calls for the list function found in views.py. 
+All of the possible url paths are contained within the urls.py found inside legacyhalos_web. Appending the list$ to the base url calls for the list function found in views.py, and the same is true for index and centrals
 list function calls for list.html with the information we give it; pickle, paginator,
+
+index.html is the homepage content.(talk about static directory). In our homepage, there is a link that appends list$ to the base url. 
 
 list.html loads everything loop that goes through each result and puts it on the table that is diplayed,  
 redMaPPer ID contains href that changed the url to the base url + centrals$,  
@@ -73,5 +75,11 @@ Start by running the manage.py file and declaring the server domain
 
 This will inturn look through the settings file. Everything in the settings page is loaded, and the BASE_URL is defined (along with the STATIC_URL). 
 
+
+
 ## Deploying the Application
+
+During testing, debug in settings.py can be set to true, but in production mode it should be set to false, as any error messages could leak important information
+
+### Setting up Apache
 
