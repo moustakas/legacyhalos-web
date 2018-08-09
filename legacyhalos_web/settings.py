@@ -15,19 +15,17 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'eok&i&(7=!8u%9lr48%pks9x7pfp7b=a6^p)^ldscte+t&_tz+'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'eok&i&(7=!8u%9lr48%pks9x7pfp7b=a6^p)^ldscte+t&_tz+')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 DEBUG = False
 
-ALLOWED_HOSTS = ['nyx.siena.edu', 'localhost', 'galaxy.siena.edu']
+ALLOWED_HOSTS = ['nyx.siena.edu', 'galaxy.siena.edu']
 
 
 # Application definition
@@ -134,3 +132,13 @@ STATICFILES_DIRS = (
     )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+#python manage.py check --deploy recommended settings
+
+#SECURE_HSTS_SECONDS =
+#SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+#SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+#X_FRAME_OPTIONS = 'DENY'
