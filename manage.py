@@ -1,3 +1,7 @@
+"""
+Used to run the server for this Django project
+"""
+
 #!/usr/bin/env python
 import os
 import sys
