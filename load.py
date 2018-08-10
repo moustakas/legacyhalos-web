@@ -1,10 +1,14 @@
+"""
+Load and parse through an input data file. Currently using "centrals-sample.fits".
+Creates and populates a database table to represent centrals model
+"""
 import os,sys
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "legacyhalos_web.settings")
 import django
 django.setup()
 
 from legacyhalos_web.models import Centrals
-import csv
+#import csv
 from astropy.table import Table
 
 #if True:
@@ -23,6 +27,7 @@ from astropy.table import Table
 ##     centrals.sdss_objid = row[7]
 ##     centrals.save()
 
+#
 data = Table.read('centrals-sample.fits')
 data.rename_column('type', 'morphtype')
 
