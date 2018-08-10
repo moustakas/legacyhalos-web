@@ -51,12 +51,13 @@ def list(req):
     #apply filter to centrals model, then store in queryset
     cen_filter = CentralsFilter(req.GET, queryset=Centrals.objects.all().order_by(sort))
     cen_filtered = cen_filter.qs
-    #pickle queryset and store in session
+    #use pickle to serialize queryset, and store in session
     req.session['results_list'] = pickle.dumps(cen_filtered)
-    #add pagination
+    #use django pagination functionality
     paginator = Paginator(cen_filtered, 50)
     page_num = req.GET.get('page')
     page = paginator.get_page(page_num)
+    #include pagination values we will use in html page in the return statement
     return render(req, 'list.html', {'page': page, 'paginator': paginator})
 
 def index(req):
@@ -77,14 +78,17 @@ def centrals(req):
     req -- the http request
     """
     index = int(req.GET.get('index'))
+    #load from session and use slicing to access info on that Central object
     cen_list = pickle.loads(req.session['results_list'])
     cen = cen_list[index-1:index][0]
+    #determine previous and next index
     prev_index = index - 1
     if (prev_index == 0):
         prev_index = len(cen_list)
     next_index = index + 1
     if (next_index > len(cen_list)):
        next_index = 1
+    #include values we will use in html page in the return statement
     return render(req, 'centrals.html', {'cen_list': cen_list, 'index': index, 'cen': cen, 'next_index': next_index, 'prev_index': prev_index})
 
 def send_file(fn, content_type, unlink=False, modsince=None, expires=3600, filename=None):
