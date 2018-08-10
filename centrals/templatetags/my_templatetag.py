@@ -19,10 +19,13 @@ def url_replace(req, field, value):
     """
     Replace the old GET value of desired field with a new value.
     
-    Keyword arguments:
-    req -- the http request
-    field -- the field to replace
-    value -- the new value
+    Args:
+        req: the http request
+        field: the field to replace
+        value: the new value
+    
+    Returns:
+        The updated url with the new value
     """
     dict_ = req.GET.copy()
     dict_[field] = value
@@ -33,9 +36,12 @@ def url_replace_sort(req, new_sort):
     """
     Replace the old GET value of sort with a new value, or negate it if they are equal to sort the opposite way.
     
-    Keyword arguments:
-    req -- the http request
-    new_sort -- the sort value a user clicked on
+    Args:
+        req: the http request
+        new_sort: the sort value a user clicked on
+        
+    Returns:
+        The updated url with the new sort value
     """
     dict_ = req.GET.copy()
     if 'sort' in dict_ and dict_['sort'] is not "":
@@ -54,8 +60,11 @@ def url_pull(req):
     """
     Return a string describing the search criteria used.
     
-    Keyword arguments:
-    req -- the http request
+    Args:
+        req: the http request
+        
+    Returns:
+        Description of search criteria
     """
     dict_ = req.GET.copy()
     search = "Search Criteria:"
@@ -129,12 +138,15 @@ def url_pull(req):
 @register.simple_tag
 def photo_pull(req, id_num, img_name):
      """
-    Return a string path to desired image.
+    Creates path to image based on name and redMapper id number.
     
-    Keyword arguments:
-    req -- the http request
-    id_num -- the redmapperID of the image galaxy
-    img_name -- the name of the desired image
+    Args:
+        req: the http request
+        id_num: the redmapperID of the image galaxy
+        img_name: the name of the desired image
+        
+    Returns: 
+        Path to desired image
     """
     path = "static/data/" + id_num + "/" + id_num + "-" + img_name 
     return path    
@@ -142,11 +154,14 @@ def photo_pull(req, id_num, img_name):
 @register.simple_tag
 def viewer_link(ra, dec):
      """
-    Return a string with the viewer link for desired galaxy.
+    Creates a string with the viewer link for desired galaxy.
     
-    Keyword arguments:
-    ra -- the ra value to use in link
-    dec -- the dec value to use in link
+    Args:
+        ra: the ra value to use in link
+        dec: the dec value to use in link
+        
+    Returns: 
+        Viewer link based on ra and dec values
     """
     baseurl = 'http://legacysurvey.org/viewer/'
     viewer = '{}?ra={:.6f}&dec={:.6f}&zoom=15&layer=decals-dr5'.format(baseurl, ra, dec)
@@ -155,9 +170,12 @@ def viewer_link(ra, dec):
 @register.simple_tag
 def skyserver_link(sdss_objid):
      """
-    Return a string with skyserver link for desired galaxy.
+    Creates a string with skyserver link for desired galaxy.
     
-    Keyword arguments:
-    sdss_objid -- the sdss_objid value to use in link
+    Args:
+        sdss_objid -- the sdss_objid value to use in link
+        
+    Returns: 
+        Viewer link based on sdss_objid value
     """
     return 'http://skyserver.sdss.org/dr14/en/tools/explore/summary.aspx?id=%d' % sdss_objid
