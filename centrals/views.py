@@ -23,8 +23,11 @@ def list(req):
     Returns the list.html download file, or renders the list.html page after it 
     applies the filter, stores result to session, and sets up pagination.
     
-    Keyword arguments:
-    req -- the http request
+    Args:
+        req: the http request
+        
+    Returns: 
+        File stream if user clicked download, otherwise render for list.html
     """
     #if download button was pressed return a send_file
     if req.method == 'POST':
@@ -64,18 +67,24 @@ def index(req):
      """
     Renders the homepage from index.html
     
-    Keyword arguments:
-    req -- the http request
+    Args:
+        req: the http request
+        
+    Returns: 
+        Render for index.html
     """
     return render(req, 'index.html')
 
 def centrals(req):
      """
-    Renders the centrals.html page after it 
+    Renders the centrals.html page for the current index after it 
     loads queryset from session and determines previous and next index to look at.
     
-    Keyword arguments:
-    req -- the http request
+    Args:
+        req: the http request
+        
+    Returns: 
+        Render for centrals.html based on index value
     """
     index = int(req.GET.get('index'))
     #load from session and use slicing to access info on that Central object
