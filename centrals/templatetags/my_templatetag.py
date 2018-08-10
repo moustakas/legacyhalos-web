@@ -37,21 +37,21 @@ def url_pull(req):
     entry = False
     if "mem_match_id__gte" in dict_:
         if dict_["mem_match_id__gte"] == "":
-            search += " redMaPPer ID low: 45 |"
+            search += " redMaPPer ID min: 45 |"
         else:
-            search += " redMaPPer ID low: " + dict_["mem_match_id__gte"] + " |"
+            search += " redMaPPer ID min: " + dict_["mem_match_id__gte"] + " |"
             entry = True
     if "mem_match_id__lte" in dict_:
         if dict_["mem_match_id__lte"] == "":
-            search += "redMaPPer ID high: 695620 |"
+            search += "redMaPPer ID max: 695620 |"
         else:
-            search += " redMaPPer ID high : " + dict_["mem_match_id__lte"] + " |"
+            search += " redMaPPer ID max: " + dict_["mem_match_id__lte"] + " |"
             entry = True
     if "ra__gte" in dict_:
         if dict_["ra__gte"] ==  "":
-            search += "\n RA low: 0 |"
+            search += "\n RA min: 0 |"
         else:
-            search += "\n RA low: " + dict_["ra__gte"] + " |"
+            search += "\n RA min: " + dict_["ra__gte"] + " |"
             entry = True
     if "ra__lte" in dict_:
         if dict_["ra__lte"] == "":
@@ -61,39 +61,39 @@ def url_pull(req):
             entry = True
     if "dec__gte" in dict_:
         if dict_["dec__gte"] ==  "":
-            search += " Dec low: -11 |"
+            search += " Dec min: -11 |"
         else:
-            search += " Dec low: " + dict_["dec__gte"] + " |"
+            search += " Dec min: " + dict_["dec__gte"] + " |"
             entry = True
     if "dec__lte" in dict_:
         if dict_["dec__lte"] == "":
-            search += " Dec high: 32 |"
+            search += " Dec max: 32 |"
         else:
-            search += " Dec high: " + dict_["dec__lte"] + " |"
+            search += " Dec max: " + dict_["dec__lte"] + " |"
             entry = True
     if "z__gte" in dict_:
         if dict_["z__gte"] ==  "":
-            search += "\n Redshift low: 0 |"
+            search += "\n Redshift min: 0 |"
         else:
-            search += "\n Redshift low: " + dict_["z__gte"] + " |"
+            search += "\n Redshift min: " + dict_["z__gte"] + " |"
             entry = True
     if "z__lte" in dict_:
         if dict_["z__lte"] == "":
-            search += " Redshift high: 32 |"
+            search += " Redshift max: 32 |"
         else:
-            search += " Redshift high: " + dict_["z__lte"] + " |"
+            search += " Redshift max: " + dict_["z__lte"] + " |"
             entry = True
     if "la__gte" in dict_:
         if dict_["la__gte"] ==  "":
-            search += " Richness low: -11 |"
+            search += " Richness min: -11 |"
         else:
-            search += " Richness low: " + dict_["dec__gte"] + " |"
+            search += " Richness min: " + dict_["dec__gte"] + " |"
             entry = True
     if "la__lte" in dict_:
         if dict_["la__lte"] == "":
-            search += " Redshift high: 32 |"
+            search += " Redshift max: 32 |"
         else:
-            search += " Redshift high: " + dict_["la__lte"] + " |"
+            search += " Redshift max: " + dict_["la__lte"] + " |"
             entry = True
     if not entry:
         search = "Showing all results"
