@@ -1,8 +1,16 @@
+"""
+This is a custom filter for the Centrals model, 
+which selects Centrals objects in the database based on meeting desired criteria.
+
+Filter options include greater than or equal to, and less than or equal to 
+on the following Centrals fields: ra, dec, z, and la.
+The filter can be used in a form on our webpage, as seen in list.html. 
+"""
 import django_filters
 from legacyhalos_web.models import Centrals
 
 class CentralsFilter(django_filters.FilterSet):
-    #name is the Centrals object variable
+    #field_name is the Centrals object variable
     #lookup_expr is used to get ranges (currently using greater/less than or equal to  
     ra__gte = django_filters.NumberFilter(field_name='ra', lookup_expr='gte')
     ra__lte = django_filters.NumberFilter(field_name='ra', lookup_expr='lte')
