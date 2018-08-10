@@ -1,11 +1,17 @@
+"""
+Holds the functions that send http responses to the browser, including 
+rendering the html pages index.html, list.html, and centrals.html, or sending a download file.
+
+All logic that must be done before the browser renders the html occurs here, including 
+sessions, serialization, querying database, applying filters, and pagination.
+"""
+
 import os
 import pickle
 import tempfile
 import numpy as np
-
 import astropy.io.fits
 from astropy.table import Table, Column
-
 from django.shortcuts import render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
@@ -13,15 +19,14 @@ from .filters import CentralsFilter
 from legacyhalos_web.models import Centrals
 
 def list(req):
-    sort = 'mem_match_id'
-    if "sort" in req.GET:
-        sort = req.GET.get('sort')
-    cen_filter = CentralsFilter(req.GET, queryset=Centrals.objects.all().order_by(sort))
-    cen_filtered = cen_filter.qs
-    req.session['results_list'] = pickle.dumps(cen_filtered)
-    paginator = Paginator(cen_filtered, 50)
-    page_num = req.GET.get('page')
-    page = paginator.get_page(page_num)
+    """
+    Returns the list.html download file, or renders the list.html page after it 
+    applies the filter, stores result to session, and sets up pagination.
+    
+    Keyword arguments:
+    req -- the http request
+    """
+    #if download button was pressed return a send_file
     if req.method == 'POST':
         # Ideally, this step would grab the full set of data from the parent
         # FITS file (before it's loaded into Django in load.py).  So this is a
@@ -37,13 +42,40 @@ def list(req):
         os.unlink(tmpfn)
         data.write(tmpfn)
         return send_file(tmpfn, 'image/fits', unlink=True, filename='results.fits')
-    
+    #otherwise render the page based on new filter
+    #automatically sort by mem_match_id if no other sort value given
+    sort = 'mem_match_id'
+    if "sort" in req.GET:
+        sort = req.GET.get('sort')
+        
+    #apply filter to centrals model, then store in queryset
+    cen_filter = CentralsFilter(req.GET, queryset=Centrals.objects.all().order_by(sort))
+    cen_filtered = cen_filter.qs
+    #pickle queryset and store in session
+    req.session['results_list'] = pickle.dumps(cen_filtered)
+    #add pagination
+    paginator = Paginator(cen_filtered, 50)
+    page_num = req.GET.get('page')
+    page = paginator.get_page(page_num)
     return render(req, 'list.html', {'page': page, 'paginator': paginator})
 
 def index(req):
+     """
+    Renders the homepage from index.html
+    
+    Keyword arguments:
+    req -- the http request
+    """
     return render(req, 'index.html')
 
 def centrals(req):
+     """
+    Renders the centrals.html page after it 
+    loads queryset from session and determines previous and next index to look at.
+    
+    Keyword arguments:
+    req -- the http request
+    """
     index = int(req.GET.get('index'))
     cen_list = pickle.loads(req.session['results_list'])
     cen = cen_list[index-1:index][0]
@@ -55,32 +87,11 @@ def centrals(req):
        next_index = 1
     return render(req, 'centrals.html', {'cen_list': cen_list, 'index': index, 'cen': cen, 'next_index': next_index, 'prev_index': prev_index})
 
-#def download(req):
-    #cen_list = pickle.loads(req.session['results_list'])
-    #for cen in cen_list:req.GET.get('
-    #    table
-    # Create your table of results... probably from a database query.
-    # Should probably use astropy.io.fits instead of astrometry.util.fits!
-    #data_rows = [{1,2.0, 'x'},
-    #             {4,5.0, 'y'},
-    #             {5,8.2, 'z'}]
-    #table = Table(rows=data_rows, names=('a','b','c'))
-    #table.write
-    #table = fits_table()
-    #table = Table([[1, 2], [4, 5], [7, 8]], names=('a', 'b', 'c'))
-    #tempfiletable =  tempfile.mkstemp(suffix='.fits')
-    #table.write(tempfiletable, format='fits')
-    #table.x = np.arange(3)
-    #f,tmpfn = tempfile.mkstemp(suffix='.fits')
-    #os.close(f)
-    #os.unlink(tmpfn)
-    # Write the FITS file contents...
-    #table.write(tmpfn)
-    #return send_file(tmpfn, 'image/fits', unlink=True, filename='results.fits')
-
-
-def send_file(fn, content_type, unlink=False, modsince=None, expires=3600,
-              filename=None):
+def send_file(fn, content_type, unlink=False, modsince=None, expires=3600, filename=None):
+     """
+    Creates a streaminghttpresponse to send download file to browser
+    Taken from unwise.me views.py
+    """
     import datetime
     from django.http import HttpResponseNotModified, StreamingHttpResponse
     '''
