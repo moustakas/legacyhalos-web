@@ -1,6 +1,14 @@
+"""
+Each model will be written as a class here, 
+instantiated and populated by load.py,
+with each model stored as a table in the database and the fields stored as columns.
+"""
 from django.db.models import Model, IntegerField, CharField, FloatField, IPAddressField, DateTimeField, ManyToManyField, TextField, BooleanField
 
 class Centrals(Model):
+    """
+    Model to represent a central galaxy
+    """
     objid = IntegerField(null=True)
     morphtype = CharField(max_length=6, null=True)
     ra = FloatField(null=True)
