@@ -137,7 +137,7 @@ def url_pull(req):
 
 @register.simple_tag
 def photo_pull(req, id_num, img_name):
-     """
+    """
     Creates path to image based on name and redMapper id number.
     
     Args:
@@ -153,7 +153,7 @@ def photo_pull(req, id_num, img_name):
 
 @register.simple_tag
 def viewer_link(ra, dec):
-     """
+    """
     Creates a string with the viewer link for desired galaxy.
     
     Args:
@@ -169,7 +169,7 @@ def viewer_link(ra, dec):
 
 @register.simple_tag
 def skyserver_link(sdss_objid):
-     """
+    """
     Creates a string with skyserver link for desired galaxy.
     
     Args:

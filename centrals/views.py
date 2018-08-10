@@ -64,7 +64,7 @@ def list(req):
     return render(req, 'list.html', {'page': page, 'paginator': paginator})
 
 def index(req):
-     """
+    """
     Renders the homepage from index.html
     
     Args:
@@ -76,7 +76,7 @@ def index(req):
     return render(req, 'index.html')
 
 def centrals(req):
-     """
+    """
     Renders the centrals.html page for the current index after it 
     loads queryset from session and determines previous and next index to look at.
     
@@ -101,7 +101,7 @@ def centrals(req):
     return render(req, 'centrals.html', {'cen_list': cen_list, 'index': index, 'cen': cen, 'next_index': next_index, 'prev_index': prev_index})
 
 def send_file(fn, content_type, unlink=False, modsince=None, expires=3600, filename=None):
-     """
+    """
     Creates a streaminghttpresponse to send download file to browser
     Taken from unwise.me views.py
     """

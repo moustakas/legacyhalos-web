@@ -10,11 +10,12 @@ Central Galaxy ...
 <div class="centrals-wrapper">
 <h1>Central Galaxy {{ cen.mem_match_id_string }}</h1>
 <a href="../">Home</a>
+<br />
 <a href="../list?">Search</a>
 <br />
-<a href="?{% url_replace request 'index' next_index %}">Next Central Galaxy</a>
 <br />
-<a href="?{% url_replace request 'index' prev_index %}">Previous Central Galaxy</a>
+<a href="?{% url_replace request 'index' prev_index %}" style="float:left;">Previous Central Galaxy</a>
+<a href="?{% url_replace request 'index' next_index %}" style="float:right">Next Central Galaxy</a>
 <br />
 <br />
 
