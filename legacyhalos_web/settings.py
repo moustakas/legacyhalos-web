@@ -23,9 +23,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'eok&i&(7=!8u%9lr48%pks9x7pfp7b
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['nyx.siena.edu', 'galaxy.siena.edu', 'atlas.local']
+ALLOWED_HOSTS = ['nyx.siena.edu', 'galaxy.siena.edu', 'atlas.local', '127.0.0.1']
 
 
 # Application definition
